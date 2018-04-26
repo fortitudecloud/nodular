@@ -1,0 +1,21 @@
+{
+  "name": "nodular-cli",
+  "version": "0.0.1",
+  "description": "CLI App development",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^8.0.32"
+  },
+  "bin": {
+    "nodular": "dist/bin/nodular.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "git-clone": "^0.1.0"
+  }
+}

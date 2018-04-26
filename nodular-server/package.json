@@ -1,0 +1,33 @@
+{
+  "name": "nodular-server",
+  "version": "0.0.1",
+  "description": "Server",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "Nodular",
+    "Server"
+  ],
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "nodular": "file:../nodular",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.5.10",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.5",
+    "@types/node": "^8.0.34",
+    "@types/socket.io": "^1.4.33",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "path": "^0.12.7"
+  }
+}

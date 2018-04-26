@@ -1,0 +1,16 @@
+{
+  "name": "build",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "debug": "nodemon --watch ./dist --debug=0.0.0.0:5858 --debug-brk --nolazy",    
+    "nodemon": "nodemon --watch ./dist --nolazy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodular": "file:../nodular",
+    "nodular-server": "file:../nodular-server"
+  }
+}

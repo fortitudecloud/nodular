@@ -1,0 +1,17 @@
+{
+  "name": "nodular",
+  "version": "0.0.1",
+  "description": "Base Library",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodular"
+  ],
+  "dependencies": {
+    "reflect-metadata": "^0.1.10"
+  },
+  "author": "Lionel Hickey",
+  "license": "ISC"
+}

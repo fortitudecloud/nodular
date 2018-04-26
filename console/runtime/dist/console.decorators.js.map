@@ -1,0 +1,1 @@
+{"version":3,"file":"console.decorators.js","sourceRoot":"","sources":["../src/console.decorators.ts"],"names":[],"mappings":";;AAAA,4BAA0B;AAC1B,iCAAwC;AAExC;IACI,OAAO,UAAU,MAAgB;QAC7B,OAAO,CAAC,cAAc,CAAC,qBAAa,CAAC,UAAU,CAAC,GAAG,EAAE,EAAE,EAAE,MAAM,CAAC,CAAC;IACrE,CAAC,CAAA;AACL,CAAC;AAJD,gCAIC"}

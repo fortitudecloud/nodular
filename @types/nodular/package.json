@@ -1,0 +1,12 @@
+{
+  "name": "@types/nodular",
+  "version": "0.0.1",
+  "description": "Definitions", 
+  "types": "index.d.ts", 
+  "scripts": {},
+  "keywords": [
+    "Nodular"
+  ],
+  "author": "Lionel Hickey",
+  "license": "ISC"
+}

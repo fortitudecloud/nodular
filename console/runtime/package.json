@@ -1,0 +1,29 @@
+{
+  "name": "runtime",
+  "version": "0.0.1",
+  "description": "Console Runtime",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w -p ./src",
+    "debug": "nodemon --watch ./dist --debug=0.0.0.0:5858 --debug-brk --nolazy",    
+    "nodemon": "nodemon --watch ./dist --nolazy",
+    "start": "node ./dist/index.js"
+  },
+  "keywords": [
+    "Nodular",
+    "Console",
+    "Runtime",
+    "App"
+  ],
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "dependencies": {
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.6",
+    "@types/nodular": "file:../../@types/nodular",
+    "@types/nodular-server": "file:../../@types/nodular-server",
+    "reflect-metadata": "^0.1.10"
+  }
+}
