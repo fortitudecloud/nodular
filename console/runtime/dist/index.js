@@ -19,7 +19,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([nodular_server_1.ServerModule, shell_1.ShellModule])
+        nodular_1.Nodular([nodular_server_1.ServerModule, nodular_server_1.HttpModule, shell_1.ShellModule])
     ], Start);
     return Start;
 }());

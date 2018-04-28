@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                background-color: #eceff2;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                height: 50px;
+                background-color: #409adf;
+            }
+
+            nav label {
+                color: #eee;
+            }
+
+            iframe {
+                margin: 0;                
+                border: none;
+                flex-grow: 1;
+            }
+        </style>
+
+        <script>
+            (function() {
+                window.setTimeout(() => {
+                    document.getElementById('toggle').addEventListener('click', (e) => {
+                        var frame = document.getElementById('appWindow');
+                        if(e.target.textContent == 'Vue Typescript') {
+                            e.target.textContent = "Angular App";
+                            frame.src = "/ng/";
+                        } else {
+                            e.target.textContent = "Vue Typescript";
+                            frame.src = "/vue/";
+                        }
+                    });
+                }, 500);                
+            })();            
+        </script>
+    </head>
+    <body>
+        <nav><label id="toggle">Vue Typescript</label></nav>
+        <iframe id="appWindow" src="/vue/"></iframe>
+    </body>
+</html>

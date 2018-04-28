@@ -1,5 +1,5 @@
 import { Nodular } from 'nodular';
-import { ServerModule } from 'nodular-server';
+import { ServerModule, HttpModule } from 'nodular-server';
 import { ShellModule } from './app/shell';
 
 export module ConsoleModule {
@@ -8,5 +8,5 @@ export module ConsoleModule {
     };
 }
 
-@Nodular([ServerModule, ShellModule])
+@Nodular([ServerModule, HttpModule, ShellModule])
 class Start {}
