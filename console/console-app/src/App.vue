@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import Console from './components/Console'
 
 export default {
@@ -27,11 +26,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '../variables.scss';
+    @import './assets/variables.scss';
     #app {
         display: flex;
         flex-direction: row;
         height: 50px; 
-        background-color: $console-blue;       
+        background-color: $console-blue;        
     }
 </style>

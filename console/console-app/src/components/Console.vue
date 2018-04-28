@@ -1,14 +1,22 @@
 <template>
-    <div class="console">
-        <div></div>
-        <div class="center">
-            <label>{{ title }}</label>
+    <div class="console" flex="row">
+        <div size="1" class="pad-5"></div>
+        <div flex="column" center size="1" class="pad-5">
+            <div flex="row" center>
+                <label flex="column" center>{{ title }}</label>
+            </div>            
         </div>
-        <div></div>        
+        <div flex="row" end size="1" class="pad-5">
+            <Poper>
+                <img src="../assets/ic_account_circle_white_24px.svg">
+            </Poper>            
+        </div>        
     </div>        
 </template>
 
 <script>
+import Poper from './Poper';
+
 export default {
   name: 'Console',
   props: {
@@ -20,38 +28,33 @@ export default {
   data () {
     return {         
     }
+  },
+  components: {
+    Poper
   }
 }
 </script>
 
 <style lang="scss" scoped>
-    @import '../../variables.scss';
+    @import '../assets/variables.scss';
 
     .console {
-        display: flex;
-        flex-direction: row;
         flex-grow: 1;        
         height: 50px; 
         background-color: $console-blue;
 
         div {
-            flex: 1;
-
-            &.center {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-
-                label {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                }
-            }
-
             label {
                 color: #eee;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                text-shadow: 1px 1px rgba(19, 20, 21, 0.25);
             }
-        }        
+        }     
+        
+        .pad-5 {
+            padding: 5px;
+        }
     }
 </style>
