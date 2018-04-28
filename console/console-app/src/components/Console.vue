@@ -8,7 +8,11 @@
         </div>
         <div flex="row" end size="1" class="pad-5">
             <Poper>
-                <img src="../assets/ic_account_circle_white_24px.svg">
+                <img src="../assets/ic_account_circle_white_24px.svg" slot="handle">
+                <ul slot="content">
+                    <li>One</li>
+                    <li>Two</li>
+                </ul>
             </Poper>            
         </div>        
     </div>        
@@ -41,7 +45,7 @@ export default {
     .console {
         flex-grow: 1;        
         height: 50px; 
-        background-color: $console-blue;
+        background-color: $console-purple;
 
         div {
             label {
