@@ -77,7 +77,24 @@ module ContainerTests {
             return `${this.greeting.hello()} ${this.nameService.name} ${this.animalSingleton.animal}.
             ${this.nameService.name} says "${this.response.talk()}"`;
         }
-    }       
+    } 
+
+    @Injectable({
+        bind: () => "BINDERCLASS",
+        singleton: true
+    })
+    export class BinderClass {
+        name: string = 'Hoggs';
+    }
+    
+    @Injectable()
+    export class HasBinder {
+        @Inject("BINDERCLASS") bClass: any;
+
+        getName(): string {
+            return this.bClass.name;
+        }
+    }
     
 }
 
@@ -130,6 +147,10 @@ ioc.resolve([TYPES.Greeting], (m) => {
     //console.log(m(paramless.hello(), service.name, single.animal).greet());
     //var res = rf('Woof!');
     console.log(m().greet());
+})();
+
+ioc.resolve([ContainerTests.HasBinder], (b) => {
+    console.log(b().getName());
 })();
 
 // console.log(paramless.hello());

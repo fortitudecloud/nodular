@@ -40,7 +40,7 @@ export module UserModule {
 
         @Get('/auth/:provider/return') authReturn = (req, res) => 
             [this.passport.authenticate(req.params.provider), (req, res) => {
-                res.redirect('/');
+                res.redirect('/auth/' + req.params.provider + '/success');
             }];
     }
 

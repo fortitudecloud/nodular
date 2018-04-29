@@ -54,10 +54,21 @@ export class NodularContainer {
             for(var prop in keys) {   
                 var service = Reflect.getMetadata(keys[prop], instance);
                 try {
-                    var serviceMeta = Reflect.getMetadata(decorators.injectable, service);
-                    this.resolve([service], 
-                        (value) => instance[keys[prop]] = 
-                            (serviceMeta.singleton || serviceMeta.factory) ? value : value())();                
+                    if(typeof service === "string") {
+                        this.resolve([service],
+                            (value) => {
+                                var s = typeof value === "object" ? value : value();
+                                var serviceMeta = Reflect.getMetadata(decorators.injectable, s.__proto__.constructor);
+                                this.resolve([service], 
+                                    (value) => instance[keys[prop]] = 
+                                        (serviceMeta.singleton || serviceMeta.factory) ? value : value())();        
+                            })();
+                    } else {
+                        var serviceMeta = Reflect.getMetadata(decorators.injectable, service);
+                        this.resolve([service], 
+                            (value) => instance[keys[prop]] = 
+                                (serviceMeta.singleton || serviceMeta.factory) ? value : value())();                
+                    }                    
                 } catch (e) {}
             }
             if(instance.onInit) instance.onInit();

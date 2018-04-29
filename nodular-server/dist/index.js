@@ -25,8 +25,13 @@ var ServerModule;
         }
         ServerConfig.prototype.bind = function (func) {
             this.binders.push(func);
+            // if already bound
+            if (this.aRef)
+                func(this.aRef);
         };
         ServerConfig.prototype.bindConfigs = function (a) {
+            if (!this.aRef)
+                this.aRef = a;
             this.binders.forEach(function (e) { return e(a); });
         };
         ServerConfig = __decorate([

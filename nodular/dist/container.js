@@ -52,9 +52,19 @@ var NodularContainer = /** @class */ (function () {
             for (var prop in keys) {
                 var service = Reflect.getMetadata(keys[prop], instance);
                 try {
-                    var serviceMeta = Reflect.getMetadata(decorators_1.default.injectable, service);
-                    _this.resolve([service], function (value) { return instance[keys[prop]] =
-                        (serviceMeta.singleton || serviceMeta.factory) ? value : value(); })();
+                    if (typeof service === "string") {
+                        _this.resolve([service], function (value) {
+                            var s = typeof value === "object" ? value : value();
+                            var serviceMeta = Reflect.getMetadata(decorators_1.default.injectable, s.__proto__.constructor);
+                            _this.resolve([service], function (value) { return instance[keys[prop]] =
+                                (serviceMeta.singleton || serviceMeta.factory) ? value : value(); })();
+                        })();
+                    }
+                    else {
+                        var serviceMeta = Reflect.getMetadata(decorators_1.default.injectable, service);
+                        _this.resolve([service], function (value) { return instance[keys[prop]] =
+                            (serviceMeta.singleton || serviceMeta.factory) ? value : value(); })();
+                    }
                 }
                 catch (e) { }
             }

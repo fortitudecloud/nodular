@@ -108,6 +108,34 @@ var ContainerTests;
         return Message;
     }());
     ContainerTests.Message = Message;
+    var BinderClass = /** @class */ (function () {
+        function BinderClass() {
+            this.name = 'Hoggs';
+        }
+        BinderClass = __decorate([
+            nodular_1.Injectable({
+                bind: function () { return "BINDERCLASS"; },
+                singleton: true
+            })
+        ], BinderClass);
+        return BinderClass;
+    }());
+    ContainerTests.BinderClass = BinderClass;
+    var HasBinder = /** @class */ (function () {
+        function HasBinder() {
+        }
+        HasBinder.prototype.getName = function () {
+            return this.bClass.name;
+        };
+        __decorate([
+            nodular_1.Inject("BINDERCLASS")
+        ], HasBinder.prototype, "bClass", void 0);
+        HasBinder = __decorate([
+            nodular_1.Injectable()
+        ], HasBinder);
+        return HasBinder;
+    }());
+    ContainerTests.HasBinder = HasBinder;
 })(ContainerTests || (ContainerTests = {}));
 var loader = new nodular_1.Loader();
 loader.register([ContainerTests]);
@@ -156,7 +184,10 @@ ioc.resolve([TYPES.Greeting], function (m) {
     //var res = rf('Woof!');
     console.log(m().greet());
 })();
+ioc.resolve([ContainerTests.HasBinder], function (b) {
+    console.log(b().getName());
+})();
 // console.log(paramless.hello());
 // console.log(service.name);
-// console.log(single.animal); 
+// console.log(single.animal);
 //# sourceMappingURL=container.tests.js.map
