@@ -1,4 +1,4 @@
-import { Entry, Inject } from 'nodular';
+import { Entry, Inject, Injectable } from 'nodular';
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as io from 'socket.io';
@@ -10,6 +10,25 @@ var httpServer;
 
 export module ServerModule {    
 
+    @Injectable({        
+        singleton: true
+    })
+    export class ServerConfig {
+        private binders: any[] = [];
+        private aRef: express.Application;
+
+        bind(func: (app: express.Application) => void): void {
+            this.binders.push(func);
+            // if already bound
+            if(this.aRef) func(this.aRef);
+        }
+
+        bindConfigs(a: express.Application) {
+            if(!this.aRef) this.aRef = a;
+            this.binders.forEach(e => e(a));
+        }
+    }
+
     @Entry()
     export class Server {
         //private container: NodularContainer;
@@ -17,6 +36,7 @@ export module ServerModule {
         public socketReady: Subject<io.Server> = new Subject();
         @Inject(HttpModule.HttpController) private httpController: HttpModule.HttpController;
         @Inject(SocketModule.SocketController) private socketController: SocketModule.SocketController;
+        @Inject(ServerConfig) private serverConfig: ServerConfig;
 
         onInit() {
             //create expressjs application
@@ -53,7 +73,10 @@ export module ServerModule {
                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
                 res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE, OPTIONS');
                 next();
-            });              
+            });   
+            
+            // custom configs
+            this.serverConfig.bindConfigs(this.app);
         }
 
         public http() {
@@ -91,7 +114,7 @@ export module ServerModule {
             console.log('Nodular server running on port 3000 :)');
         }
     }
-
+    
     export var decorators = {
         TRIGGER: "TRIGGER",        
         APIWARE: "APIWARE",            

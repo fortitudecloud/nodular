@@ -19,6 +19,24 @@ var socket_controller_1 = require("./socket.controller");
 var httpServer;
 var ServerModule;
 (function (ServerModule) {
+    var ServerConfig = /** @class */ (function () {
+        function ServerConfig() {
+            this.binders = [];
+        }
+        ServerConfig.prototype.bind = function (func) {
+            this.binders.push(func);
+        };
+        ServerConfig.prototype.bindConfigs = function (a) {
+            this.binders.forEach(function (e) { return e(a); });
+        };
+        ServerConfig = __decorate([
+            nodular_1.Injectable({
+                singleton: true
+            })
+        ], ServerConfig);
+        return ServerConfig;
+    }());
+    ServerModule.ServerConfig = ServerConfig;
     var Server = /** @class */ (function () {
         function Server() {
             this.socketReady = new rxjs_1.Subject();
@@ -55,6 +73,8 @@ var ServerModule;
                 res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE, OPTIONS');
                 next();
             });
+            // custom configs
+            this.serverConfig.bindConfigs(this.app);
         };
         Server.prototype.http = function () {
             var router;
@@ -88,6 +108,9 @@ var ServerModule;
         __decorate([
             nodular_1.Inject(socket_controller_1.SocketModule.SocketController)
         ], Server.prototype, "socketController", void 0);
+        __decorate([
+            nodular_1.Inject(ServerConfig)
+        ], Server.prototype, "serverConfig", void 0);
         Server = __decorate([
             nodular_1.Entry()
         ], Server);
