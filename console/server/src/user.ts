@@ -7,13 +7,13 @@ export module UserModule {
     @HttpController()
     export class Authentication {
         @Inject(ServerModule.ServerConfig) private config: any; // fix!  ServerModule.ServerConfig;
-        @Inject("AUTH") authStrategy: Strategy;
+        @Inject("AUTH") authStrategy: IPassportStrategy;
 
         private passport: any;
 
         onInit() {
             var passport = new Passport();
-            passport.use(this.authStrategy);
+            passport.use(this.authStrategy.name, this.authStrategy.getStrategy());
 
             // todo: replace these with a service from the implementer
             passport.serializeUser(function(user, cb) {
@@ -42,6 +42,11 @@ export module UserModule {
             [this.passport.authenticate(req.params.provider), (req, res) => {
                 res.redirect('/auth/' + req.params.provider + '/success');
             }];
+    }
+
+    export interface IPassportStrategy {
+        name: string;
+        getStrategy(): Strategy;
     }
 
     /**

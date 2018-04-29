@@ -8,21 +8,39 @@ module GoogleModule {
     const GOOGLE_CLIENT_SECRET = '3AymfnvIBGe71wimkfChQxO1';
 
     @Injectable({
-        resolver: () => new GoogleStrategy({
-                        clientID: GOOGLE_CLIENT_ID,
-                        clientSecret: GOOGLE_CLIENT_SECRET,
-                        callbackURL: "http://localhost:3000/auth/google/return"
-                      },
-                      function(accessToken, refreshToken, profile, cb) {
-                        // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-                        //   return cb(err, user);
-                        // });
-                        return cb(null, profile);
-                      }),
+        // resolver: () => new GoogleStrategy({
+        //                 clientID: GOOGLE_CLIENT_ID,
+        //                 clientSecret: GOOGLE_CLIENT_SECRET,
+        //                 callbackURL: "http://localhost:3000/auth/google/return"
+        //               },
+        //               function(accessToken, refreshToken, profile, cb) {
+        //                 // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        //                 //   return cb(err, user);
+        //                 // });
+        //                 return cb(null, profile);
+        //               }),
         bind: () => "AUTH",
         singleton: true
+        //factory: true
     })
-    export class GoogleAuth {}
+    export class GoogleAuth implements UserModule.IPassportStrategy {
+        name: string = 'google';
+        constructor() {
+        }
+        getStrategy() {
+            return new GoogleStrategy({
+                                clientID: GOOGLE_CLIENT_ID,
+                                clientSecret: GOOGLE_CLIENT_SECRET,
+                                callbackURL: "http://localhost:3000/auth/google/return"
+                              },
+                              function(accessToken, refreshToken, profile, cb) {
+                                // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                                //   return cb(err, user);
+                                // });
+                                return cb(null, profile);
+                              });
+        }
+    }
     // export class GoogleAuth extends GoogleStrategy {
     //     constructor() {
     //         super({

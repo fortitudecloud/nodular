@@ -16,21 +16,36 @@ var GoogleModule;
     var GOOGLE_CLIENT_SECRET = '3AymfnvIBGe71wimkfChQxO1';
     var GoogleAuth = /** @class */ (function () {
         function GoogleAuth() {
+            this.name = 'google';
         }
+        GoogleAuth.prototype.getStrategy = function () {
+            return new passport_google_oauth20_1.Strategy({
+                clientID: GOOGLE_CLIENT_ID,
+                clientSecret: GOOGLE_CLIENT_SECRET,
+                callbackURL: "http://localhost:3000/auth/google/return"
+            }, function (accessToken, refreshToken, profile, cb) {
+                // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                //   return cb(err, user);
+                // });
+                return cb(null, profile);
+            });
+        };
         GoogleAuth = __decorate([
             nodular_1.Injectable({
-                resolver: function () { return new passport_google_oauth20_1.Strategy({
-                    clientID: GOOGLE_CLIENT_ID,
-                    clientSecret: GOOGLE_CLIENT_SECRET,
-                    callbackURL: "http://localhost:3000/auth/google/return"
-                }, function (accessToken, refreshToken, profile, cb) {
-                    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-                    //   return cb(err, user);
-                    // });
-                    return cb(null, profile);
-                }); },
+                // resolver: () => new GoogleStrategy({
+                //                 clientID: GOOGLE_CLIENT_ID,
+                //                 clientSecret: GOOGLE_CLIENT_SECRET,
+                //                 callbackURL: "http://localhost:3000/auth/google/return"
+                //               },
+                //               function(accessToken, refreshToken, profile, cb) {
+                //                 // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                //                 //   return cb(err, user);
+                //                 // });
+                //                 return cb(null, profile);
+                //               }),
                 bind: function () { return "AUTH"; },
                 singleton: true
+                //factory: true
             })
         ], GoogleAuth);
         return GoogleAuth;

@@ -25,7 +25,7 @@ var UserModule;
         }
         Authentication.prototype.onInit = function () {
             var passport = new passport_1.Passport();
-            passport.use(this.authStrategy);
+            passport.use(this.authStrategy.name, this.authStrategy.getStrategy());
             // todo: replace these with a service from the implementer
             passport.serializeUser(function (user, cb) {
                 cb(null, user);
