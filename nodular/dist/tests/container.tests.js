@@ -189,5 +189,5 @@ ioc.resolve([ContainerTests.HasBinder], function (b) {
 })();
 // console.log(paramless.hello());
 // console.log(service.name);
-// console.log(single.animal);
+// console.log(single.animal); 
 //# sourceMappingURL=container.tests.js.map

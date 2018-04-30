@@ -20,9 +20,11 @@
     "nodular": "file:../../nodular",
     "nodular-server": "file:../../nodular-server",
     "passport-google-oauth20": "^1.0.0",
+    "passport-linkedin-oauth2": "^1.5.0",
     "reflect-metadata": "^0.1.10"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "rxjs": "^6.0.0"

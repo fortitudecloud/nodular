@@ -8,38 +8,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var nodular_1 = require("nodular");
 var nodular_server_1 = require("nodular-server");
-var passport_1 = require("passport");
+//import { Strategy, Passport, PassportStatic, Authenticator } from 'passport';
+var passport = require("passport");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
 var UserModule;
 (function (UserModule) {
     var Authentication = /** @class */ (function () {
         function Authentication() {
-            var _this = this;
-            this.auth = function (req, res) {
-                return _this.passport.authenticate(req.params.provider);
-            };
-            this.authReturn = function (req, res) {
-                return [_this.passport.authenticate(req.params.provider), function (req, res) {
-                        res.redirect('/auth/' + req.params.provider + '/success');
-                    }];
-            };
+            this.auth = passport.authenticate('linkedin');
+            this.authReturn = 
+            // [this.passport.authenticate('google'), (req, res) => {
+            //     res.redirect('/auth/' + req.params.provider + '/success');
+            // }];
+            passport.authenticate('linkedin', {
+                successRedirect: '/auth/linkedin/success',
+                failureRedirect: '/login'
+            });
         }
         Authentication.prototype.onInit = function () {
-            var passport = new passport_1.Passport();
-            passport.use(this.authStrategy.name, this.authStrategy.getStrategy());
-            // todo: replace these with a service from the implementer
-            passport.serializeUser(function (user, cb) {
-                cb(null, user);
+            // TODO: replace all below with implementers service code
+            passport.serializeUser(function (user, done) {
+                done(null, user);
             });
-            passport.deserializeUser(function (obj, cb) {
-                cb(null, obj);
+            passport.deserializeUser(function (obj, done) {
+                done(null, obj);
             });
+            passport.use(this.authStrategy.getStrategy());
             this.config.bind(function (app) {
-                // todo: replace this with a session service from the implementer
-                app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+                app.use(cookieParser());
+                app.use(session({
+                    secret: 'cookie_secret',
+                    name: 'kaas',
+                    resave: false,
+                    saveUninitialized: true
+                }));
                 app.use(passport.initialize());
                 app.use(passport.session());
             });
-            this.passport = passport;
+            //this.passport = passport;
         };
         __decorate([
             nodular_1.Inject(nodular_server_1.ServerModule.ServerConfig)

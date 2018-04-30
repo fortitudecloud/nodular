@@ -1,7 +1,10 @@
 import { Nodular, Injectable, Inject } from 'nodular';
 import { ServerModule, HttpController, Get, Post } from 'nodular-server';
 import { Observable } from 'rxjs';
-import { Strategy, Passport, PassportStatic, Authenticator } from 'passport';
+//import { Strategy, Passport, PassportStatic, Authenticator } from 'passport';
+import * as passport from 'passport';
+import * as cookieParser from 'cookie-parser';
+import * as session from 'express-session';
 
 export module UserModule {
     @HttpController()
@@ -9,44 +12,51 @@ export module UserModule {
         @Inject(ServerModule.ServerConfig) private config: any; // fix!  ServerModule.ServerConfig;
         @Inject("AUTH") authStrategy: IPassportStrategy;
 
-        private passport: any;
+        public passport: any;
 
-        onInit() {
-            var passport = new Passport();
-            passport.use(this.authStrategy.name, this.authStrategy.getStrategy());
-
-            // todo: replace these with a service from the implementer
-            passport.serializeUser(function(user, cb) {
-                cb(null, user);
+        onInit() {  
+            // TODO: replace all below with implementers service code
+            passport.serializeUser(function(user, done) {
+                done(null, user);
             });
             
-            passport.deserializeUser(function(obj, cb) {
-                cb(null, obj);
+            passport.deserializeUser(function(obj, done) {
+                done(null, obj);
             });
+            
+            passport.use(this.authStrategy.getStrategy());            
 
             this.config.bind((app) => {
-                // todo: replace this with a session service from the implementer
-                app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-
+                app.use( cookieParser());
+                app.use( session({ 
+                    secret: 'cookie_secret',
+                    name:   'kaas',
+                    resave: false,
+                    saveUninitialized: true
+                }));
                 app.use(passport.initialize());
                 app.use(passport.session());
             });
 
-            this.passport = passport;
+            //this.passport = passport;
         }
 
-        @Get('/auth/:provider') auth = (req, res) => 
-            this.passport.authenticate(req.params.provider);
+        @Get('/auth/:provider') auth = //(req, res) => 
+            passport.authenticate('linkedin');
 
-        @Get('/auth/:provider/return') authReturn = (req, res) => 
-            [this.passport.authenticate(req.params.provider), (req, res) => {
-                res.redirect('/auth/' + req.params.provider + '/success');
-            }];
+        @Get('/auth/:provider/return') authReturn = //(req, res) => 
+            // [this.passport.authenticate('google'), (req, res) => {
+            //     res.redirect('/auth/' + req.params.provider + '/success');
+            // }];
+            passport.authenticate( 'linkedin', { 
+                successRedirect: '/auth/linkedin/success',
+                failureRedirect: '/login'
+            });
     }
 
     export interface IPassportStrategy {
         name: string;
-        getStrategy(): Strategy;
+        getStrategy(): passport.Strategy;
     }
 
     /**
