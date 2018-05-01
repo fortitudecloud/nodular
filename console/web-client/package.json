@@ -1,0 +1,23 @@
+{
+  "name": "web-client",
+  "version": "0.0.1",
+  "description": "Console Client Apis",
+  "main": "dist/index.js", 
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Console",
+    "Interface"
+  ],
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.0.0",
+    "socket.io-client": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/socket.io-client": "^1.4.32"
+  }
+}

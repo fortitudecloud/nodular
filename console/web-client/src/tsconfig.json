@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "../dist",
+        "sourceMap": true,
+        "target": "es5",
+        "module": "commonjs",     
+        "lib": ["es2017", "dom"],
+        "experimentalDecorators": true,
+        "declaration": true        
+    }
+}
