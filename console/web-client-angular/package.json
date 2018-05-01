@@ -90,6 +90,6 @@
     "zone.js": "^0.8.16"
   },
   "dependencies": {
-    "web-client": "file:///C:\\temp\\nodular\\console\\web-client"
+    "web-client": "file:../web-client"
   }
 }
