@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { TickTockComponent } from './components';
+import { TickTockComponent, IdentityBarComponent } from './components';
 import { TickTockService } from './services';
 
 @NgModule({
   providers: [
-    TickTockService,
+    TickTockService
   ],
   declarations: [
-    TickTockComponent,
+    TickTockComponent, IdentityBarComponent
   ],
   exports: [
-    TickTockComponent,
+    TickTockComponent, IdentityBarComponent
   ]
 })
 export class TickTockModule {

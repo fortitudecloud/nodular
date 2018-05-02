@@ -56,10 +56,12 @@
     "test:watch": "karma start --auto-watch --no-single-run",
     "tslint": "tslint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "web-client": "file:../web-client"
+  },
   "peerDependencies": {
     "@angular/common": "^4.0.0",
-    "@angular/core": "^4.0.0"
+    "@angular/core": "^4.0.0"    
   },
   "devDependencies": {
     "@angular/common": "^4.0.0",
