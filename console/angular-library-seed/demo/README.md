@@ -1,6 +1,6 @@
-# `angular-library-seed` demo projects
+# `aero-components` demo projects
 
-> This folder contains two demo-projects (`esm` and `umd` folders) for [angular-library-seed](https://github.com/trekhleb/angular-library-seed). These demo projects may help you to test whether your library supports AOT/JIT/UMD builds or not.
+> This folder contains two demo-projects (`esm` and `umd` folders) for [aero-components](https://github.com/trekhleb/aero-components). These demo projects may help you to test whether your library supports AOT/JIT/UMD builds or not.
 >
 > - `esm` folder contains Angular project that is built using [@angular/compiler](https://www.npmjs.com/package/@angular/compiler) and [Webpack](https://webpack.js.org/). This demo project utilizes ESM (pure ES2015) sources of your library to do two kind of compilations:
 >   - [AOT](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html) (ahead-of-time) compilation.
@@ -13,7 +13,7 @@ Demo-projects are created as an alternative to `npm link` command. You may simpl
 # Quick Start
 
 ```bash
-# Assuming the you are already in angular-library-seed/demo folder
+# Assuming the you are already in aero-components/demo folder
 
 # Install all dependencies
 yarn install
@@ -28,7 +28,7 @@ yarn build
 # File Structure
 
 ```
-angular-library-seed
+aero-components
   └─ demo                           * Folder for demo applications (MAY BE DELETED if not required) 
      ├─ esm                         * AOT/JIT demo project
      |  └─ dist                     * This folder will contain project ESM builds
@@ -86,8 +86,8 @@ Install Yarn by following the [instructions](https://yarnpkg.com/en/docs/install
 This step may be optional at first since you might just want to build demo projects with TickTock library example.
 
 Once you're ready to develop your own library you should do the following.
-- Adjust source codes of `angular-library-seed/demo/esm/src/app/*.ts` files for AOT/JIT builds.
-- Adjust source codes of `angular-library-seed/demo/umd/app/*.ts` files for UMD builds.
+- Adjust source codes of `aero-components/demo/esm/src/app/*.ts` files for AOT/JIT builds.
+- Adjust source codes of `aero-components/demo/umd/app/*.ts` files for UMD builds.
 
 ## Build demo projects
 - `yarn build` for building AOT, JIT and UMD demo versions all at once.
@@ -98,16 +98,16 @@ You may also build projects separately:
 - `yarn build:umd` - for building UMD version of demo project.
 
 To see your library in action launch the following files in your browser:
-- `angular-library-seed/demo/esm/dist/jit/index.html` file for JIT build
-- `angular-library-seed/demo/esm/dist/aot/index.html` file for AOT build
-- `angular-library-seed/demo/umd/index.html` file for UMD build
+- `aero-components/demo/esm/dist/jit/index.html` file for JIT build
+- `aero-components/demo/esm/dist/aot/index.html` file for AOT build
+- `aero-components/demo/umd/index.html` file for UMD build
 
 ## Build JIT project in watch mode
 - `yarn start` for building JIT version of demo project and start watching for library changes.
 
-This command may be used simultaneously in combination with [angular-library-seed](https://github.com/trekhleb/angular-library-seed)'s `yarn build:watch`. As a result once you change library source code it will be automatically re-compiled and in turn your JIT demo-project will be automatically re-built and you will be able to see that changes in your browser instantly. 
+This command may be used simultaneously in combination with [aero-components](https://github.com/trekhleb/aero-components)'s `yarn build:watch`. As a result once you change library source code it will be automatically re-compiled and in turn your JIT demo-project will be automatically re-built and you will be able to see that changes in your browser instantly. 
 
-See [Development Workflow](https://github.com/trekhleb/angular-library-seed#development-workflow) section of [angular-library-seed](https://github.com/trekhleb/angular-library-seed)'s README for more details.
+See [Development Workflow](https://github.com/trekhleb/aero-components#development-workflow) section of [aero-components](https://github.com/trekhleb/aero-components)'s README for more details.
 
 ## Other commands
 

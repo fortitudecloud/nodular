@@ -1,5 +1,5 @@
 {
-  "name": "angular-library-seed",
+  "name": "aero-components",
   "version": "0.0.20",
   "description": "Angular library seed",
   "main": "./dist/index.umd.js",
@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/trekhleb/angular-library-seed.git"
+    "url": "https://github.com/trekhleb/aero-components.git"
   },
   "bugs": {
-    "url": "https://github.com/trekhleb/angular-library-seed/issues"
+    "url": "https://github.com/trekhleb/aero-components/issues"
   },
-  "homepage": "https://github.com/trekhleb/angular-library-seed#readme",
+  "homepage": "https://github.com/trekhleb/aero-components#readme",
   "scripts": {
     "build": "npm run build:esm && npm run build:umd",
     "build:esm": "gulp inline-templates && npm run ngcompile",

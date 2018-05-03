@@ -11,5 +11,13 @@
 
     &[center] {
         justify-content: center;
+    }    
+}
+
+$attr-size: size !default;
+
+@for $i from 1 through 12 {
+    [#{$attr-size}="#{$i}"] {
+        flex: $i;
     }
 }

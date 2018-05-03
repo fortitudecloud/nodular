@@ -1,5 +1,5 @@
 {
-  "name": "angular-library-seed-demo",
+  "name": "aero-components-demo",
   "description": "AOT/JIT/UMD build demo of angular library seed",
   "license": "MIT",
   "scripts": {
@@ -36,6 +36,7 @@
     "core-js": "^2.4.1",
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.8.1",
+    "material-icons": "^0.2.2",
     "rimraf": "^2.6.1",
     "rxjs": "^5.2.0",
     "typescript": "^2.2.0",
