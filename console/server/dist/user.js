@@ -16,13 +16,13 @@ var UserModule;
 (function (UserModule) {
     var Authentication = /** @class */ (function () {
         function Authentication() {
-            this.auth = passport.authenticate('linkedin');
+            this.auth = passport.authenticate(this.authStrategy.name);
             this.authReturn = 
             // [this.passport.authenticate('google'), (req, res) => {
             //     res.redirect('/auth/' + req.params.provider + '/success');
             // }];
-            passport.authenticate('linkedin', {
-                successRedirect: '/auth/linkedin/success',
+            passport.authenticate(this.authStrategy.name, {
+                successRedirect: '/auth/' + this.authStrategy.name + '/success',
                 failureRedirect: '/login'
             });
         }

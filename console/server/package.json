@@ -17,10 +17,12 @@
     "@types/nodular": "file:../../@types/nodular",
     "@types/nodular-server": "file:../../@types/nodular-server",
     "@types/passport": "^0.4.5",
+    "node-json-db": "^0.7.5",
     "nodular": "file:../../nodular",
     "nodular-server": "file:../../nodular-server",
     "passport-google-oauth20": "^1.0.0",
     "passport-linkedin-oauth2": "^1.5.0",
+    "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.10"
   },
   "dependencies": {
