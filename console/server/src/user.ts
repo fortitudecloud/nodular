@@ -42,14 +42,14 @@ export module UserModule {
         }
 
         @Get('/auth/:provider') auth = //(req, res) => 
-            passport.authenticate('linkedin');
+            passport.authenticate(this.authStrategy.name);
 
         @Get('/auth/:provider/return') authReturn = //(req, res) => 
             // [this.passport.authenticate('google'), (req, res) => {
             //     res.redirect('/auth/' + req.params.provider + '/success');
             // }];
-            passport.authenticate( 'linkedin', { 
-                successRedirect: '/auth/linkedin/success',
+            passport.authenticate( this.authStrategy.name, { 
+                successRedirect: '/auth/' + this.authStrategy.name + '/success',
                 failureRedirect: '/login'
             });
     }
