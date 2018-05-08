@@ -13,7 +13,4 @@ npm i
 tsc -p ./src
 cd ../web-client
 npm i
-tsc -p ./src
-cd ../web-client-angular
-npm i
 echo "Finished Building Server"

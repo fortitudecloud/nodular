@@ -15,6 +15,12 @@
             "request": "launch",
             "name": "LinkedIn User",
             "program": "${workspaceFolder}/dist/tests/linkedin.user.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Local User",
+            "program": "${workspaceFolder}/dist/tests/local.user.js"
         }
     ]
 }

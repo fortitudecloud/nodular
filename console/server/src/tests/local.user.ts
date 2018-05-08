@@ -1,32 +1,47 @@
 import { Nodular, Injectable, InjectableOptions } from 'nodular';
 import { ServerModule, HttpModule, HttpController, Get } from 'nodular-server';
 import { UserModule } from '../index';
+import * as passport from 'passport';
+import * as session from 'express-session';
 import { Strategy as LocalStrategy } from 'passport-local';
 import * as JsonDB from 'node-json-db';
 
 module LocalModule {
-    @Injectable({
-        bind: () => "AUTH",
-        singleton: true    
-    })
-    export class LocalAuth implements UserModule.IPassportStrategy {
-        name: string = 'local';
-        db: JsonDB;
+    
+    @HttpController()
+    export class LocalAuth extends UserModule.AuthenticationController {
+        strategy: passport.Strategy = new LocalStrategy((username, password, done) => {
+            var user = {
+                id: "1",
+                username: "lhickey",
+                name: "Lionel Hickey"
+            };
+            if(user.username == username && password == "password") done(null, user);
+            else done(null, false);
+        });
 
-        constructor() {
-            this.db = new JsonDB('users', true, false);
-        }
-        getStrategy() {
-            return new LocalStrategy((username, password, done) => {
-                var user = this.db.getData('/' + username);
-                if(!user) return done(null, false);
-                else return done(null, user);
-            });              
-        }
-    }    
+        session: any = session({ 
+            secret: 'cookie_secret',
+            name:   'kaas',
+            resave: false,
+            saveUninitialized: true
+        });
 
-    @HttpController() 
-    export class AppController {
+        authenticate(passport: passport.PassportStatic): any {
+            return passport.authenticate('local', { 
+                successRedirect: '/auth/' + 'local' + '/success',
+                failureRedirect: '/login'
+            });
+        }
+
+        serializeUser(user: any, done: (err: any, id?: any) => void) {
+            done(null, user);
+        }
+
+        deserializeUser(user: any, done: (err: any, user?: any) => void) {
+            done(null, user);
+        }
+
         @Get('/') home = (req, res) => {
             res.send('<a href="/auth/local">Login</a>')
         }
@@ -40,3 +55,6 @@ module LocalModule {
         }
     }
 }
+
+@Nodular([ServerModule, HttpModule, UserModule, LocalModule])
+class Start {}

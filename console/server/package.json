@@ -17,6 +17,8 @@
     "@types/nodular": "file:../../@types/nodular",
     "@types/nodular-server": "file:../../@types/nodular-server",
     "@types/passport": "^0.4.5",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "node-json-db": "^0.7.5",
     "nodular": "file:../../nodular",
     "nodular-server": "file:../../nodular-server",

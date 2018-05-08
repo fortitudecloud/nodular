@@ -1,4 +1,14 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,60 +18,77 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var nodular_1 = require("nodular");
 var nodular_server_1 = require("nodular-server");
+var index_1 = require("../index");
+var session = require("express-session");
 var passport_local_1 = require("passport-local");
-var JsonDB = require("node-json-db");
 var LocalModule;
 (function (LocalModule) {
-    var LocalAuth = /** @class */ (function () {
+    var LocalAuth = /** @class */ (function (_super) {
+        __extends(LocalAuth, _super);
         function LocalAuth() {
-            this.name = 'local';
-            this.db = new JsonDB('users', true, false);
-        }
-        LocalAuth.prototype.getStrategy = function () {
-            var _this = this;
-            return new passport_local_1.Strategy(function (username, password, done) {
-                var user = _this.db.getData('/' + username);
-                if (!user)
-                    return done(null, false);
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.strategy = new passport_local_1.Strategy(function (username, password, done) {
+                var user = {
+                    id: "1",
+                    username: "lhickey",
+                    name: "Lionel Hickey"
+                };
+                if (user.username == username && password == "password")
+                    done(null, user);
                 else
-                    return done(null, user);
+                    done(null, false);
             });
-        };
-        LocalAuth = __decorate([
-            nodular_1.Injectable({
-                bind: function () { return "AUTH"; },
-                singleton: true
-            })
-        ], LocalAuth);
-        return LocalAuth;
-    }());
-    LocalModule.LocalAuth = LocalAuth;
-    var AppController = /** @class */ (function () {
-        function AppController() {
-            this.home = function (req, res) {
+            _this.session = session({
+                secret: 'cookie_secret',
+                name: 'kaas',
+                resave: false,
+                saveUninitialized: true
+            });
+            _this.home = function (req, res) {
                 res.send('<a href="/auth/local">Login</a>');
             };
-            this.success = function (req, res) {
+            _this.success = function (req, res) {
                 res.send('Success!');
             };
-            this.fail = function (req, res) {
+            _this.fail = function (req, res) {
                 res.send('<p>Failed Auth</p><a href="/auth/local">Login Again</a>');
             };
+            return _this;
         }
+        LocalAuth.prototype.authenticate = function (passport) {
+            return passport.authenticate('local', {
+                successRedirect: '/auth/' + 'local' + '/success',
+                failureRedirect: '/login'
+            });
+        };
+        LocalAuth.prototype.serializeUser = function (user, done) {
+            done(null, user);
+        };
+        LocalAuth.prototype.deserializeUser = function (user, done) {
+            done(null, user);
+        };
         __decorate([
             nodular_server_1.Get('/')
-        ], AppController.prototype, "home", void 0);
+        ], LocalAuth.prototype, "home", void 0);
         __decorate([
             nodular_server_1.Get('/auth/local/success')
-        ], AppController.prototype, "success", void 0);
+        ], LocalAuth.prototype, "success", void 0);
         __decorate([
             nodular_server_1.Get('/login')
-        ], AppController.prototype, "fail", void 0);
-        AppController = __decorate([
+        ], LocalAuth.prototype, "fail", void 0);
+        LocalAuth = __decorate([
             nodular_server_1.HttpController()
-        ], AppController);
-        return AppController;
-    }());
-    LocalModule.AppController = AppController;
+        ], LocalAuth);
+        return LocalAuth;
+    }(index_1.UserModule.AuthenticationController));
+    LocalModule.LocalAuth = LocalAuth;
 })(LocalModule || (LocalModule = {}));
+var Start = /** @class */ (function () {
+    function Start() {
+    }
+    Start = __decorate([
+        nodular_1.Nodular([nodular_server_1.ServerModule, nodular_server_1.HttpModule, index_1.UserModule, LocalModule])
+    ], Start);
+    return Start;
+}());
 //# sourceMappingURL=local.user.js.map
