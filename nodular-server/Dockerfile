@@ -12,6 +12,6 @@ RUN npm i
 RUN gulp build
 
 EXPOSE 3000
-EXPOSE 5858
+EXPOSE 9222
 
 CMD [ "npm", "run", "inspect" ]
