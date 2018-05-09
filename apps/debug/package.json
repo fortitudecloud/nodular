@@ -1,0 +1,15 @@
+{
+  "name": "debug",
+  "version": "1.0.0",
+  "description": "Testing Nodular Server",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/nodular": "file:../../@types/nodular",
+    "@types/nodular-server": "file:../../@types/nodular-server"
+  }
+}
