@@ -1,0 +1,52 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+
+    [action] { flex: 1; }
+    [title] { flex: 1; }
+    [user] { flex: 1; }
+}
+
+.intent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin: 0 25px;
+}
+
+.intent i {
+    opacity: .2;
+}
+
+.intent span {
+    position: absolute;
+    right: -6px;
+    background-color: #1e90e5;
+    font-size: 10px;
+    height: 12px;
+    width: 12px;
+    text-align: center;
+    color: #eee;
+    border-radius: 50%;
+    top: 20%;
+    padding: 1px;
+}
+
+.user label {    
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.user label span {
+    margin: 0 20px;
+    background-color: #1e90e5;
+    color: #eee;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+

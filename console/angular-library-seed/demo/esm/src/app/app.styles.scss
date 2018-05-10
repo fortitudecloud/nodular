@@ -11,7 +11,7 @@
 
     &[center] {
         justify-content: center;
-    }  
+    }         
 }
 
 [grow] { flex-grow: 1; }
@@ -22,4 +22,8 @@ $attr-size: size !default;
     [#{$attr-size}="#{$i}"] {
         flex: $i;
     }
+}
+
+aero-user {
+    height: 50px;
 }

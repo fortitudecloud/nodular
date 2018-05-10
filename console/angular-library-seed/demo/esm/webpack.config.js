@@ -28,6 +28,10 @@ const config = {
             }
           }
         ]
+      },
+      {
+        test:/\.(s*)css$/,
+        use:['style-loader','css-loader', 'sass-loader']
       }
     ]
   },
@@ -44,7 +48,7 @@ const config = {
      */
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.ejs'),
-      title: 'Angular Library Starter',
+      title: 'Aero Components',
       inject: 'body'
     }),
 

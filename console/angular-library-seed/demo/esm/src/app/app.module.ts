@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { TickTockModule, AeroModule } from '../../lib';
 
 @NgModule({
-  imports: [ BrowserModule, TickTockModule ],
+  imports: [ BrowserModule, AeroModule ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
