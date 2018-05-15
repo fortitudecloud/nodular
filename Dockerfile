@@ -3,7 +3,7 @@ FROM amble/nodemonjs7-pi
 WORKDIR /nodular-server
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
-COPY ./@types ./@types
+COPY ./@types /@types
 
 RUN npm i typescript -g
 RUN npm i gulp -g
