@@ -4,6 +4,7 @@
   "description": "Testing Nodular Server",
   "main": "./dist/index.js",
   "scripts": {
+    "watch": "tsc -w -p ./src",
     "start": "node ./dist/index.js",
     "inspect": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/index.js"
   },

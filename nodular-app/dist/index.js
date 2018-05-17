@@ -16,7 +16,7 @@ var DebugModule;
     var DebugHttp = /** @class */ (function () {
         function DebugHttp() {
             this.home = function (req, res) {
-                res.send('Dogman');
+                res.send('Dogman rises');
             };
         }
         __decorate([
