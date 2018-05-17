@@ -16,6 +16,8 @@ RUN npm i
 RUN gulp build
 RUN npm i -g .
 
+WORKDIR /nodular-app
+
 EXPOSE 3000
 EXPOSE 9222
 
