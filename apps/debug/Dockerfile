@@ -15,8 +15,11 @@ FROM lionelsdocker/nodular-base
 WORKDIR /app
 COPY . /app
 
-RUN npm install
+#RUN npm install
 
-RUN tsc -p ./src
+#RUN tsc -p ./src
 
-COPY ./dist /dist
+EXPOSE 3000
+EXPOSE 9222
+
+CMD [ "npm", "run", "inspect" ]
