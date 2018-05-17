@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var nodular_1 = require("nodular");
-//import { ServerModule, HttpModule, HttpController, Get } from '../index';
-var nodular_server_1 = require("nodular-server");
+var index_1 = require("../index");
+//import { ServerModule, HttpModule, HttpController, Get } from 'nodular-server';
 var DebugModule;
 (function (DebugModule) {
     var DebugHttp = /** @class */ (function () {
@@ -18,10 +18,10 @@ var DebugModule;
             };
         }
         __decorate([
-            nodular_server_1.Get('/')
+            index_1.Get('/')
         ], DebugHttp.prototype, "home", void 0);
         DebugHttp = __decorate([
-            nodular_server_1.HttpController()
+            index_1.HttpController()
         ], DebugHttp);
         return DebugHttp;
     }());
@@ -31,7 +31,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([nodular_server_1.ServerModule, nodular_server_1.HttpModule, nodular_server_1.HttpController, DebugModule])
+        nodular_1.Nodular([index_1.ServerModule, index_1.HttpModule, index_1.HttpController, DebugModule])
     ], Start);
     return Start;
 }());

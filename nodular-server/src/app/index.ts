@@ -1,6 +1,6 @@
 import { Nodular } from 'nodular';
-//import { ServerModule, HttpModule, HttpController, Get } from '../index';
-import { ServerModule, HttpModule, HttpController, Get } from 'nodular-server';
+import { ServerModule, HttpModule, HttpController, Get } from '../index';
+//import { ServerModule, HttpModule, HttpController, Get } from 'nodular-server';
 
 module DebugModule {
     @HttpController()

@@ -1,15 +1,18 @@
 FROM amble/nodemonjs7-pi
 
-WORKDIR /nodular-server
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
-COPY ./@types /@types
+COPY ./nodular-app /nodular-app
 
 RUN npm i typescript -g
 RUN npm i gulp -g
 
+WORKDIR /nodular-server
 RUN npm i
 RUN gulp build
+
+WORKDIR /nodular-app
+RUN npm i
 
 EXPOSE 3000
 EXPOSE 9222

@@ -1,6 +1,14 @@
 import { Nodular } from 'nodular';
-import { ServerModule } from 'nodular-server';
-import { GetModule } from './app/get';
+import { ServerModule, HttpModule, HttpController, Get } from 'nodular-server';
 
-@Nodular([ServerModule, GetModule])
+module DebugModule {
+    @HttpController()
+    export class DebugHttp {
+        @Get('/') home = (req, res) => {
+            res.send('Dogman');
+        }
+    }
+}
+
+@Nodular([ServerModule, HttpModule, HttpController, DebugModule])
 class Start {}

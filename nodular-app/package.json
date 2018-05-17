@@ -1,15 +1,15 @@
 {
-  "name": "nodular-app",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "name": "debug",
+  "version": "1.0.0",
+  "description": "Testing Nodular Server",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./dist/index.js"
   },
-  "author": "",
+  "author": "Lionel Hickey",
   "license": "ISC",
   "dependencies": {
-    "nodular-server": "file:///C:\\temp\\nodular-server"
+    "nodular": "file:../nodular",
+    "nodular-server": "file:../nodular-server"
   }
 }
