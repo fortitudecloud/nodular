@@ -10,11 +10,10 @@
 
 # Depending on how nodular-server is setup, this should sync the local app to the server, restart the server and allow debugging on the remote docker instance (in the cloud)
 
-FROM lionelsdocker/nodular-server
+FROM lionelsdocker/nodular-base
 
-RUN ls
-
-RUN npm install -g typescript
+WORKDIR /app
+COPY . /app
 
 RUN npm install
 

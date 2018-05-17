@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:    
+    build: ./apps/debug
+    ports:
+     - "3000:3000"
+     - "9222:9222"
+    volumes:
+     - nodularapp:/nodular-app
