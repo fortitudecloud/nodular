@@ -2,7 +2,7 @@ FROM amble/nodemonjs7-pi
 
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
-COPY ./Dockerfile.full /nodular-app
+COPY ./nodular-app /nodular-app
 
 RUN npm i typescript -g
 RUN npm i gulp -g
@@ -17,8 +17,9 @@ RUN npm i
 RUN gulp build
 RUN npm i -g .
 
-
 WORKDIR /nodular-app
+RUN npm i
+RUN tsc -p ./src
 
 EXPOSE 3000
 EXPOSE 9222
