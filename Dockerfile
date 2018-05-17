@@ -2,6 +2,7 @@ FROM amble/nodemonjs7-pi
 
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
+COPY ./Dockerfile.full /nodular-app
 
 RUN npm i typescript -g
 RUN npm i gulp -g
@@ -15,6 +16,7 @@ WORKDIR /nodular-server
 RUN npm i
 RUN gulp build
 RUN npm i -g .
+
 
 WORKDIR /nodular-app
 
