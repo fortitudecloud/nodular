@@ -15,3 +15,8 @@ WORKDIR /nodular-server
 RUN npm i
 RUN gulp build
 RUN npm i -g .
+
+EXPOSE 3000
+EXPOSE 9222
+
+CMD [ "npm", "run", "inspect" ]
