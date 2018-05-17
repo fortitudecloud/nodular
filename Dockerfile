@@ -3,7 +3,7 @@ FROM amble/nodemonjs7-pi
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
 COPY ./apps /nodular-app
-COPY ./nodular-app /nodular-app/app
+#COPY ./nodular-app /nodular-app/app
 
 RUN npm i typescript -g
 RUN npm i gulp -g
@@ -21,7 +21,7 @@ RUN gulp build
 WORKDIR /nodular-app
 RUN npm i
 
-WORKDIR ./app
+WORKDIR ./debug
 RUN npm i
 RUN tsc -p ./src
 
