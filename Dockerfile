@@ -1,5 +1,6 @@
 FROM amble/nodemonjs7-pi
 
+COPY ./@types /@types
 COPY ./nodular /nodular
 COPY ./nodular-server /nodular-server
 COPY ./apps /nodular-app
