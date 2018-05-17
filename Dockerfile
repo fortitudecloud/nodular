@@ -11,7 +11,7 @@ WORKDIR /nodular-server
 RUN npm i
 RUN gulp build
 
-WORKDIR /nodular-app
+WORKDIR ../nodular-app
 RUN npm i
 RUN tsc -p ./src
 
