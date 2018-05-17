@@ -5,7 +5,7 @@ module DebugModule {
     @HttpController()
     export class DebugHttp {
         @Get('/') home = (req, res) => {
-            res.send('Dogman');
+            res.send('Hoggie rises');
         }
     }
 }

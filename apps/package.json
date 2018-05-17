@@ -1,0 +1,19 @@
+{
+  "name": "apps",
+  "version": "0.0.1",
+  "description": "App layer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "App",
+    "layer"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodular": "file:../nodular",
+    "nodular-server": "file:../nodular-server"
+  }
+}

@@ -12,5 +12,8 @@
   "devDependencies": {
     "@types/nodular": "file:../../@types/nodular",
     "@types/nodular-server": "file:../../@types/nodular-server"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
   }
 }
