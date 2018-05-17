@@ -13,6 +13,7 @@ RUN gulp build
 
 WORKDIR /nodular-app
 RUN npm i
+RUN tsc -p ./src
 
 EXPOSE 3000
 EXPOSE 9222

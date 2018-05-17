@@ -4,7 +4,8 @@
   "description": "Testing Nodular Server",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "inspect": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/index.js"
   },
   "author": "Lionel Hickey",
   "license": "ISC",
