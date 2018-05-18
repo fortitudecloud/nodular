@@ -80,10 +80,15 @@ var HttpModule;
          * @param context
          */
         HttpController.prototype.get = function (router, context) {
-            var _this = this;
-            router.get(context.path, function (req, res, next) {
-                _this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+            if (Array.isArray(handle)) {
+                router.get(context.path, handle);
+            }
+            else {
+                router.get(context.path, function (req, res, next) {
+                    handle(req, res, next);
+                });
+            }
         };
         /**
          * http Post
@@ -91,10 +96,15 @@ var HttpModule;
          * @param context
          */
         HttpController.prototype.post = function (router, context) {
-            var _this = this;
-            router.post(context.path, function (req, res, next) {
-                _this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+            if (Array.isArray(handle)) {
+                router.post(context.path, handle);
+            }
+            else {
+                router.post(context.path, function (req, res, next) {
+                    handle(req, res, next);
+                });
+            }
         };
         /**
          * http Put
@@ -102,10 +112,15 @@ var HttpModule;
          * @param context
          */
         HttpController.prototype.put = function (router, context) {
-            var _this = this;
-            router.put(context.path, function (req, res, next) {
-                _this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+            if (Array.isArray(handle)) {
+                router.put(context.path, handle);
+            }
+            else {
+                router.put(context.path, function (req, res, next) {
+                    handle(req, res, next);
+                });
+            }
         };
         /**
          * http Delete
@@ -113,10 +128,15 @@ var HttpModule;
          * @param context
          */
         HttpController.prototype.delete = function (router, context) {
-            var _this = this;
-            router.delete(context.path, function (req, res, next) {
-                _this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+            if (Array.isArray(handle)) {
+                router.delete(context.path, handle);
+            }
+            else {
+                router.delete(context.path, function (req, res, next) {
+                    handle(req, res, next);
+                });
+            }
         };
         /**
          * http Patch
@@ -124,10 +144,15 @@ var HttpModule;
          * @param context
          */
         HttpController.prototype.patch = function (router, context) {
-            var _this = this;
-            router.patch(context.path, function (req, res, next) {
-                _this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+            if (Array.isArray(handle)) {
+                router.patch(context.path, handle);
+            }
+            else {
+                router.patch(context.path, function (req, res, next) {
+                    handle(req, res, next);
+                });
+            }
         };
         __decorate([
             nodular_1.Inject(ControllerFactory)

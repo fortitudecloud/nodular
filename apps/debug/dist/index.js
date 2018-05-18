@@ -11,18 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var nodular_1 = require("nodular");
 var nodular_server_1 = require("nodular-server");
+var nodular_passport_1 = require("nodular-passport");
+var user_1 = require("./user");
+var connect = require("connect-ensure-login");
 var DebugModule;
 (function (DebugModule) {
     var DebugHttp = /** @class */ (function () {
         function DebugHttp() {
-            this.home = function (req, res) {
-                res.send('Hoggie rises');
+            this.home = [connect.ensureLoggedIn(), function (req, res) {
+                    res.send('Hoggie rises');
+                }];
+            // this.protected((req, res) => {
+            //     res.send('Hoggie rises');
+            // });
+            this.login = function (req, res) {
+                res.send('Not authenticated. Hit the login route with username and password');
             };
         }
+        DebugHttp.prototype.protected = function (handle) {
+            return [
+                connect.ensureLoggedIn(),
+                handle
+            ];
+        };
         __decorate([
             nodular_server_1.Get('/'),
             __metadata("design:type", Object)
         ], DebugHttp.prototype, "home", void 0);
+        __decorate([
+            nodular_server_1.Get('/login'),
+            __metadata("design:type", Object)
+        ], DebugHttp.prototype, "login", void 0);
         DebugHttp = __decorate([
             nodular_server_1.HttpController()
         ], DebugHttp);
@@ -34,7 +53,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([nodular_server_1.ServerModule, nodular_server_1.HttpModule, nodular_server_1.HttpController, DebugModule])
+        nodular_1.Nodular([nodular_server_1.ServerModule, nodular_server_1.HttpModule, nodular_server_1.HttpController, nodular_passport_1.PassportModule, user_1.UserModule, DebugModule])
     ], Start);
     return Start;
 }());

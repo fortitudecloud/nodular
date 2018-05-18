@@ -6,6 +6,8 @@ tsc -p ./src
 cd ../nodular-server
 npm i
 gulp build
+cd ../passport
+npm i
 #cd ../build
 #npm i
 #cd ../console/server

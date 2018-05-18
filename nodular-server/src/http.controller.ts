@@ -78,9 +78,15 @@ export module HttpModule {
          * @param context 
          */
         get(router: Router, context: IActionContext) {
-            router.get(context.path, (req: Request, res: Response, next: NextFunction) => {
-                this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });        
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+
+            if(Array.isArray(handle)) {
+                router.get(context.path, handle);
+            } else {
+                router.get(context.path, (req: Request, res: Response, next: NextFunction) => {
+                    handle(req, res, next);
+                });        
+            }            
         }
 
         /**
@@ -89,9 +95,15 @@ export module HttpModule {
          * @param context 
          */
         post(router: Router, context: IActionContext) {            
-            router.post(context.path, (req: Request, res: Response, next: NextFunction) => {
-                this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });        
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+
+            if(Array.isArray(handle)) {
+                router.post(context.path, handle);        
+            } else {
+                router.post(context.path, (req: Request, res: Response, next: NextFunction) => {
+                    handle(req, res, next);
+                });        
+            }            
         }
 
         /**
@@ -100,9 +112,15 @@ export module HttpModule {
          * @param context
          */
         put(router: Router, context: IActionContext) {
-            router.put(context.path, (req: Request, res: Response, next: NextFunction) => {
-                this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });        
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+
+            if(Array.isArray(handle)) {
+                router.put(context.path, handle);
+            } else {
+                router.put(context.path, (req: Request, res: Response, next: NextFunction) => {
+                    handle(req, res, next);
+                });        
+            }            
         }
 
         /**
@@ -111,9 +129,15 @@ export module HttpModule {
          * @param context
          */
         delete(router: Router, context: IActionContext) {
-            router.delete(context.path, (req: Request, res: Response, next: NextFunction) => {
-                this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });        
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+
+            if(Array.isArray(handle)) {
+                router.delete(context.path, handle);
+            } else {
+                router.delete(context.path, (req: Request, res: Response, next: NextFunction) => {
+                    handle(req, res, next);
+                });        
+            }            
         }
 
         /**
@@ -122,9 +146,15 @@ export module HttpModule {
          * @param context
          */
         patch(router: Router, context: IActionContext) {
-            router.patch(context.path, (req: Request, res: Response, next: NextFunction) => {
-                this.controllerFactory(context.controller)[0][context.action](req, res, next);
-            });        
+            var handle = this.controllerFactory(context.controller)[0][context.action];
+
+            if(Array.isArray(handle)) {
+                router.patch(context.path, handle);
+            } else {
+                router.patch(context.path, (req: Request, res: Response, next: NextFunction) => {
+                    handle(req, res, next);
+                });        
+            }            
         }
 
         /**

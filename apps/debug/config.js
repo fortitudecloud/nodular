@@ -1,5 +1,5 @@
 module.exports = {
-    localDir: './', 
-    remoteDir: './',
+    localDir: 'dist', 
+    remoteDir: 'dist',
     host: '192.168.15.178'
 }

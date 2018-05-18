@@ -10,10 +10,20 @@
   "author": "Lionel Hickey",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^10.1.1",
     "@types/nodular": "file:../../@types/nodular",
-    "@types/nodular-server": "file:../../@types/nodular-server"
+    "@types/nodular-server": "file:../../@types/nodular-server",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0"
   },
   "dependencies": {
+    "connect-ensure-login": "^0.1.1",
+    "express-session": "^1.15.6",
+    "node-json-db": "^0.7.5",
+    "nodular-passport": "file:../../passport",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-strategy": "^1.0.0",
     "path": "^0.12.7"
   }
 }

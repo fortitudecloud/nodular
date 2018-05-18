@@ -1,0 +1,26 @@
+{
+  "name": "nodular-passport",
+  "version": "0.0.1",
+  "description": "Nodular passport module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Passport",
+    "integration",
+    "nodular"
+  ],
+  "author": "Lionel Hickey",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/nodular": "file:../@types/nodular",
+    "@types/nodular-server": "file:../@types/nodular-server"
+  },
+  "dependencies": {
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "passport": "^0.4.0"
+  }
+}
