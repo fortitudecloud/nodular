@@ -21,8 +21,8 @@ var PassportModule;
             this.auth = this.authenticate(passport);
         }
         AuthenticationController.prototype.onInit = function () {
-            passport.serializeUser(this.serializeUser);
-            passport.deserializeUser(this.deserializeUser);
+            passport.serializeUser(this.serialize());
+            passport.deserializeUser(this.deserialize());
             passport.use(this.strategy);
             this.config.bind(function (app) {
                 app.use(cookieParser());

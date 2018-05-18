@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w -p ./src",
     "inspect": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/index.js"
   },
   "author": "Lionel Hickey",

@@ -20,6 +20,8 @@ var nodular_server_1 = require("nodular-server");
 var nodular_passport_1 = require("nodular-passport");
 var session = require("express-session");
 var passport_local_1 = require("passport-local");
+var JsonDB = require("node-json-db");
+var path = require("path");
 var UserModule;
 (function (UserModule) {
     var UserController = /** @class */ (function (_super) {
@@ -33,7 +35,30 @@ var UserModule;
                 else
                     done(null, false);
             });
+            //abstract serialize: () =>  (user: any, done: (err: any, id?: any) => void) => void;
+            _this.serialize = function () {
+                return function (user, done) {
+                    done(null, user.username);
+                };
+            };
+            //deserialize: () => (id: any, done: (err: any, user?: any) => void) => void;
+            _this.deserialize = function () {
+                var getUser = function (username) {
+                    return _this.db.getData('/' + username);
+                };
+                return function (id, done) {
+                    var _u = getUser(id);
+                    done(null, _u);
+                };
+            };
             return _this;
+            // serializeUser(user: any, done: (err: any, id?: any) => void) {
+            //     done(null, user.username);
+            // }
+            // deserializeUser(user: any, done: (err: any, user?: any) => void) {
+            //     var _u = this.db.getData('/' + user);
+            //     done(null, _u);
+            // }
         }
         UserController.prototype.onInit = function () {
             // use express session storage
@@ -46,9 +71,9 @@ var UserModule;
                 }));
             });
             // get JsonDB reference
-            // var filename = path.resolve(__dirname, 'db.json');
-            // console.log(filename);
-            // this.db = new JsonDB(filename, true, true);
+            var filename = path.resolve(__dirname, 'db.json');
+            console.log(filename);
+            this.db = new JsonDB(filename, true, true);
             _super.prototype.onInit.call(this);
         };
         UserController.prototype.authenticate = function (passport) {
@@ -56,13 +81,6 @@ var UserModule;
                 successRedirect: '/auth/' + 'local' + '/success',
                 failureRedirect: '/login'
             });
-        };
-        UserController.prototype.serializeUser = function (user, done) {
-            done(null, user.id);
-        };
-        UserController.prototype.deserializeUser = function (user, done) {
-            var _u = this.db.getData('/' + user);
-            done(null, _u);
         };
         UserController = __decorate([
             nodular_server_1.HttpController()

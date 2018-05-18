@@ -24,17 +24,20 @@ export module PassportModule {
          * @param user User object to serialize
          * @param done cb passing the id value used in deserialization
          */
-        abstract serializeUser(user: any, done: (err: any, id?: any) => void);
+        //abstract serializeUser(user: any, done: (err: any, id?: any) => void);
         /**
          * Deserialization method to apply
          * @param user User object to deserialize
          * @param done cb passing the user object that was deserialized
          */
-        abstract deserializeUser(user: any, done: (err: any, user?: any) => void);         
+        //abstract deserializeUser(user: any, done: (err: any, user?: any) => void);         
+
+        abstract serialize: () =>  (user: any, done: (err: any, id?: any) => void) => void;
+        abstract deserialize: () => (id: any, done: (err: any, user?: any) => void) => void;
 
         onInit() {
-            passport.serializeUser(this.serializeUser);
-            passport.deserializeUser(this.deserializeUser);
+            passport.serializeUser(this.serialize());
+            passport.deserializeUser(this.deserialize());
             passport.use(this.strategy);
             this.config.bind((app) => {
                 app.use(cookieParser());                
@@ -52,5 +55,5 @@ export module PassportModule {
         handles.forEach((v) => handlers.push(v));
         return handlers;
     }
-
+    
 }

@@ -16,13 +16,13 @@ export declare module PassportModule {
          * @param user User object to serialize
          * @param done cb passing the id value used in deserialization
          */
-        abstract serializeUser(user: any, done: (err: any, id?: any) => void): any;
         /**
          * Deserialization method to apply
          * @param user User object to deserialize
          * @param done cb passing the user object that was deserialized
          */
-        abstract deserializeUser(user: any, done: (err: any, user?: any) => void): any;
+        abstract serialize: () => (user: any, done: (err: any, id?: any) => void) => void;
+        abstract deserialize: () => (id: any, done: (err: any, user?: any) => void) => void;
         onInit(): void;
         auth: any;
     }
