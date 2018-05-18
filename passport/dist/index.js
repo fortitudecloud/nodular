@@ -30,12 +30,6 @@ var PassportModule;
                 app.use(passport.session());
             });
         };
-        AuthenticationController.prototype.protect = function (handles) {
-            var handlers = [];
-            handlers.push(connect.ensureLoggedIn());
-            handles.forEach(function (v) { return handlers.push(v); });
-            return handlers;
-        };
         __decorate([
             nodular_1.Inject(nodular_server_1.ServerModule.ServerConfig),
             __metadata("design:type", Object)
@@ -47,5 +41,12 @@ var PassportModule;
         return AuthenticationController;
     }());
     PassportModule.AuthenticationController = AuthenticationController;
+    function protect(handles) {
+        var handlers = [];
+        handlers.push(connect.ensureLoggedIn());
+        handles.forEach(function (v) { return handlers.push(v); });
+        return handlers;
+    }
+    PassportModule.protect = protect;
 })(PassportModule = exports.PassportModule || (exports.PassportModule = {}));
 //# sourceMappingURL=index.js.map

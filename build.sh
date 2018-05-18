@@ -8,6 +8,7 @@ npm i
 gulp build
 cd ../passport
 npm i
+tsc -p ./src
 #cd ../build
 #npm i
 #cd ../console/server

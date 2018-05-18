@@ -13,27 +13,18 @@ var nodular_1 = require("nodular");
 var nodular_server_1 = require("nodular-server");
 var nodular_passport_1 = require("nodular-passport");
 var user_1 = require("./user");
-var connect = require("connect-ensure-login");
 var DebugModule;
 (function (DebugModule) {
     var DebugHttp = /** @class */ (function () {
         function DebugHttp() {
-            this.home = [connect.ensureLoggedIn(), function (req, res) {
+            this.protect = nodular_passport_1.PassportModule.protect;
+            this.home = this.protect([function (req, res) {
                     res.send('Hoggie rises');
-                }];
-            // this.protected((req, res) => {
-            //     res.send('Hoggie rises');
-            // });
+                }]);
             this.login = function (req, res) {
                 res.send('Not authenticated. Hit the login route with username and password');
             };
         }
-        DebugHttp.prototype.protected = function (handle) {
-            return [
-                connect.ensureLoggedIn(),
-                handle
-            ];
-        };
         __decorate([
             nodular_server_1.Get('/'),
             __metadata("design:type", Object)

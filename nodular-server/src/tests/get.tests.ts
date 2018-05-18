@@ -12,6 +12,13 @@ export module GetModule {
         @Get('/puma') public puma = (req, res) => {
             res.send('The cats name is Puma!');
         };
+
+        @Get('/middle') middle = [(req, res, next) => {
+            req.msg = 'Middleware message';
+            next();
+        }, (req, res) => {
+            res.send(req.msg);
+        }];
     }
 }
 

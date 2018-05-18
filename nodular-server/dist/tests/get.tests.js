@@ -19,6 +19,12 @@ var GetModule;
             this.puma = function (req, res) {
                 res.send('The cats name is Puma!');
             };
+            this.middle = [function (req, res, next) {
+                    req.msg = 'Middleware message';
+                    next();
+                }, function (req, res) {
+                    res.send(req.msg);
+                }];
         }
         __decorate([
             index_1.Get('/hoggy')
@@ -26,6 +32,9 @@ var GetModule;
         __decorate([
             index_1.Get('/puma')
         ], AnimalController.prototype, "puma", void 0);
+        __decorate([
+            index_1.Get('/middle')
+        ], AnimalController.prototype, "middle", void 0);
         AnimalController = __decorate([
             index_1.HttpController()
         ], AnimalController);

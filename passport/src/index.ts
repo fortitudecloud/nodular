@@ -41,17 +41,16 @@ export module PassportModule {
                 app.use(passport.initialize());
                 app.use(passport.session());                
             });
-        }
-
-        protected protect(handles: Array<(req: any, res: any, next?: any) => void>): any[] {
-            var handlers = [];
-            handlers.push(connect.ensureLoggedIn());
-            
-            handles.forEach((v) => handlers.push(v));
-            return handlers;
-        }
+        }        
 
         @Get('/auth/:provider') auth = this.authenticate(passport);
+    }
+
+    export function protect(handles: Array<(req: any, res: any, next?: any) => void>): any[] {
+        var handlers = [];
+        handlers.push(connect.ensureLoggedIn());        
+        handles.forEach((v) => handlers.push(v));
+        return handlers;
     }
 
 }

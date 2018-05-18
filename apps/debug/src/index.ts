@@ -9,19 +9,11 @@ module DebugModule {
     @HttpController()
     export class DebugHttp {
 
-        private protected(handle: (req: any, res: any, next?: any) => void) {
-            return [
-                connect.ensureLoggedIn(),
-                handle
-            ];
-        } 
+        private protect = PassportModule.protect;
 
-        @Get('/') home = [connect.ensureLoggedIn(), (req, res) => {
-            res.send('Hoggie rises');
-        }]
-            // this.protected((req, res) => {
-            //     res.send('Hoggie rises');
-            // });
+        @Get('/') home = this.protect([(req, res) => {
+                res.send('Hoggie rises');
+            }])            
 
         @Get('/login') login = (req, res) => {
             res.send('Not authenticated. Hit the login route with username and password');

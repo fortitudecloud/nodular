@@ -24,7 +24,7 @@ export declare module PassportModule {
          */
         abstract deserializeUser(user: any, done: (err: any, user?: any) => void): any;
         onInit(): void;
-        protected protect(handles: Array<(req: any, res: any, next?: any) => void>): any[];
         auth: any;
     }
+    function protect(handles: Array<(req: any, res: any, next?: any) => void>): any[];
 }
