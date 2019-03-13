@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch Command Tests",
+            "program": "${workspaceFolder}/cmdmod/dist/tests/cmd.tests.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/apps\\debug\\src\\index.ts",
             "outFiles": [

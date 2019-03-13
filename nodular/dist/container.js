@@ -80,6 +80,7 @@ var NodularContainer = /** @class */ (function () {
             for (var _i = 0; _i < arguments.length; _i++) {
                 a[_i] = arguments[_i];
             }
+            var _a;
             var injects = (_a = _this.singletons)[type].apply(_a, a);
             for (var i in injects)
                 _this.runtimeHash(injects[i]);
@@ -93,7 +94,6 @@ var NodularContainer = /** @class */ (function () {
                     injectedServices.push(s[ser]());
             })();
             return (injectedServices);
-            var _a;
         };
     };
     NodularContainer.prototype.runtimeHash = function (type) {
