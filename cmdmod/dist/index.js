@@ -16,11 +16,14 @@ var CMDMod;
         }
         Run.run = function (command) {
             var options = Reflect.getMetadata('cmd', command.cmd.__proto__.constructor);
-            program
+            var prog = program
                 .command(options.command)
-                //.description('hello world command')
-                //.option("-s, --setup_mode [mode]", "Which setup mode to use")
-                .action(function () {
+                .description(options.description);
+            options.switches.forEach(function (v) {
+                prog.option(v.short + ", " + v.long + ", " + v.desc);
+            });
+            //.option("-s, --setup_mode [mode]", "Which setup mode to use")
+            prog.action(function () {
                 var a = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
                     a[_i] = arguments[_i];

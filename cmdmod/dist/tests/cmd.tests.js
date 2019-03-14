@@ -13,13 +13,19 @@ var HelloMod;
     var HelloCmd = /** @class */ (function () {
         function HelloCmd() {
         }
-        HelloCmd.prototype.run = function (text) {
-            console.debug('hello ' + text);
+        HelloCmd.prototype.run = function (text, options) {
+            if (options && options.fname) {
+                console.log('hello. Your name is ' + options.fname);
+            }
+            else {
+                console.debug('hello ' + text);
+            }
         };
         HelloCmd = __decorate([
             index_1.Cmd({
                 command: 'hw [text]',
-                switches: []
+                description: 'Helloworld command app',
+                switches: [{ short: '-n', long: '--fname <nm>', desc: 'Your name' }]
             })
         ], HelloCmd);
         return HelloCmd;

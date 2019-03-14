@@ -10,11 +10,15 @@ export module CMDMod {
         static run(command: Run) {           
             var options: CommandOptions = Reflect.getMetadata('cmd', (<any>command.cmd).__proto__.constructor);
 
-            program
-            .command(options.command)
-            //.description('hello world command')
-            //.option("-s, --setup_mode [mode]", "Which setup mode to use")
-            .action((...a) => command.cmd.run(...a));
+            var prog =
+                program
+                .command(options.command)
+                .description(options.description);
+
+            options.switches.forEach((v) => {
+                prog.option(`${v.short}, ${v.long}, ${v.desc}`);
+            });                        
+            prog.action((...a) => command.cmd.run(...a));
 
             program.parse(process.argv);
         }
@@ -32,6 +36,7 @@ export function Cmd(cmd: CommandOptions, options?: InjectableOptions) {
 
 interface CommandOptions {
     command: string;
+    description: string;
     switches: { short: string, long: string, desc: string }[]
 }
 
