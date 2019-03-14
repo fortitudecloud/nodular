@@ -1,10 +1,7 @@
 import { Injectable, Nodular } from 'nodular'
 import { CMDMod, Cmd } from '../index'
 
-export module HelloMod {   
-    @Injectable({
-        bind: () => 'Command'
-    }) 
+export module HelloMod {       
     @Cmd({
         command: 'hw [text]',
         switches: []

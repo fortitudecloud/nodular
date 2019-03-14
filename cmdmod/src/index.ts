@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Entry, Inject, NodularContainer } from 'nodular'
+import { Entry, Inject, InjectableOptions } from 'nodular'
 import * as program from 'commander'
 
 export module CMDMod {
@@ -21,8 +21,11 @@ export module CMDMod {
     } 
 }
 
-export function Cmd(cmd: CommandOptions) {    
+export function Cmd(cmd: CommandOptions, options?: InjectableOptions) {    
     return function (target: any) {
+        if(options) options.bind = () => 'Command';
+        else options = { bind: () => 'Command' };
+        Reflect.defineMetadata('injectable', options || {}, target);
         Reflect.defineMetadata('cmd', cmd, target);
     }
 }

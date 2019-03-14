@@ -40,8 +40,13 @@ var CMDMod;
     }());
     CMDMod.Run = Run;
 })(CMDMod = exports.CMDMod || (exports.CMDMod = {}));
-function Cmd(cmd) {
+function Cmd(cmd, options) {
     return function (target) {
+        if (options)
+            options.bind = function () { return 'Command'; };
+        else
+            options = { bind: function () { return 'Command'; } };
+        Reflect.defineMetadata('injectable', options || {}, target);
         Reflect.defineMetadata('cmd', cmd, target);
     };
 }

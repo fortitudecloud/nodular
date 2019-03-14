@@ -17,9 +17,6 @@ var HelloMod;
             console.debug('hello ' + text);
         };
         HelloCmd = __decorate([
-            nodular_1.Injectable({
-                bind: function () { return 'Command'; }
-            }),
             index_1.Cmd({
                 command: 'hw [text]',
                 switches: []

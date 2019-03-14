@@ -14,6 +14,7 @@
     "reflect-metadata": "^0.1.10"
   },
   "devDependencies": {
-    "@types/node": "^11.11.3"
+    "@types/node": "^11.11.3",
+    "@types/nodular": "file:../@types/nodular"
   }
 }
