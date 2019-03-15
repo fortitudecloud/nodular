@@ -1,5 +1,5 @@
 import { Injectable, Nodular } from 'nodular'
-import { CMDMod, Cmd } from '../index'
+import { Cmd } from '../index'
 
 export module HelloMod {       
     @Cmd({
@@ -18,5 +18,5 @@ export module HelloMod {
     }
 }
 
-@Nodular([CMDMod, HelloMod])
+@Nodular([HelloMod])
 class Start { }

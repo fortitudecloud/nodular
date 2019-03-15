@@ -9,6 +9,8 @@ var container_1 = require("./container");
  */
 function Nodular(modules) {
     var loader = new Loader();
+    if (staged)
+        staged.forEach(function (v) { return modules.push(v); });
     loader.register(modules);
     loader.discover();
     loader.bootstrap();
@@ -17,6 +19,17 @@ function Nodular(modules) {
     };
 }
 exports.Nodular = Nodular;
+var staged;
+/**
+ * Adds module to the execution context
+ * @param mod
+ */
+function Mod(mod) {
+    if (!staged)
+        staged = [];
+    staged.push(mod);
+}
+exports.Mod = Mod;
 function Entry() {
     return function (target) {
         Reflect.defineMetadata(decorators_1.default.entry, {}, target);

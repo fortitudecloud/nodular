@@ -6,6 +6,7 @@ exports.Nodular = nodular_1.Nodular;
 exports.Entry = nodular_1.Entry;
 exports.Injectable = nodular_1.Injectable;
 exports.Inject = nodular_1.Inject;
+exports.Mod = nodular_1.Mod;
 var container_1 = require("./container");
 exports.NodularContainer = container_1.NodularContainer;
 //# sourceMappingURL=index.js.map

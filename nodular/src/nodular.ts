@@ -8,6 +8,7 @@ import { NodularContainer } from './container';
  */
 export function Nodular(modules: Array<any>) {
     var loader = new Loader();    
+    if(staged) staged.forEach(v => modules.push(v));
     loader.register(modules);
     loader.discover();
     loader.bootstrap();
@@ -15,6 +16,17 @@ export function Nodular(modules: Array<any>) {
     return function(target: Function) {                
         modules.forEach(v => Reflect.defineMetadata(decorators.nodular, v, target));
     }    
+}
+
+var staged: Array<any>;
+
+/**
+ * Adds module to the execution context
+ * @param mod 
+ */
+export function Mod(mod) {
+    if(!staged) staged = [];
+    staged.push(mod);    
 }
 
 export function Entry() {

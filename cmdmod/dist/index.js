@@ -22,7 +22,6 @@ var CMDMod;
             options.switches.forEach(function (v) {
                 prog.option(v.short + ", " + v.long + ", " + v.desc);
             });
-            //.option("-s, --setup_mode [mode]", "Which setup mode to use")
             prog.action(function () {
                 var a = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
@@ -54,4 +53,5 @@ function Cmd(cmd, options) {
     };
 }
 exports.Cmd = Cmd;
+nodular_1.Mod(CMDMod);
 //# sourceMappingURL=index.js.map

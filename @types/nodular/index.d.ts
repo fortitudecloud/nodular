@@ -91,3 +91,9 @@ export interface IEntry {
     new ();
 }
 
+/**
+ * Registers a mod 
+ * @param mod 
+ */
+export function Mod(mod: any);
+

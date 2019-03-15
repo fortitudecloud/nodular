@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Entry, Inject, InjectableOptions } from 'nodular'
+import { Entry, Inject, InjectableOptions, Mod } from 'nodular'
 import * as program from 'commander'
 
 export module CMDMod {
@@ -43,3 +43,5 @@ interface CommandOptions {
 interface Command {
     run(...a);
 }
+
+Mod(CMDMod);

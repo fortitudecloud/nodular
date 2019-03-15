@@ -36,7 +36,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([index_1.CMDMod, HelloMod])
+        nodular_1.Nodular([HelloMod])
     ], Start);
     return Start;
 }());
