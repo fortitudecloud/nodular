@@ -59,7 +59,14 @@ export interface Loader {
      */
     invoke(decorator: string, func: (obj: any, meta?: any) => void): void;
 }
-export interface NodularContainer {
+export class NodularContainer implements NodularContainerInterface {
+    runtimeHash(type: any): void;
+    register(key: any, value: any, singleton?: boolean): void;
+    resolve(...a: any[]): () => void;
+    getLoader(): Loader;
+    static context: NodularContainer
+}
+export interface NodularContainerInterface {    
     /**
      * Register service at runtime
      * @param type 
