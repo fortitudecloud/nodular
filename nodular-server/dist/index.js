@@ -112,7 +112,7 @@ var ServerModule;
                 var sockserver = io(httpServer);
                 server.socketReady.next(sockserver);
             }
-            httpServer.listen(3000);
+            httpServer.listen(process.argv[2] || 3000);
             console.log("Nodular server running on port " + (process.argv[2] || 3000) + " :)");
         };
         __decorate([

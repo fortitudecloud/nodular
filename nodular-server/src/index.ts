@@ -109,7 +109,7 @@ export module ServerModule {
                 server.socketReady.next(sockserver);                
             }
 
-            httpServer.listen(3000);
+            httpServer.listen(process.argv[2] || 3000);
 
             console.log(`Nodular server running on port ${process.argv[2] || 3000} :)`);
         }
