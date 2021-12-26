@@ -65,6 +65,7 @@ var ContainerTests;
                 Response = __decorate([
                     nodular_1.Injectable({
                         resolver: function () { return params; },
+                        //bind: (Response) => TYPES.Response
                     })
                 ], Response);
                 return Response;

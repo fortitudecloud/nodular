@@ -99,8 +99,8 @@ export module ServerModule {
         static run(server: Server) {
             var http = require("http");
 
-            var app = server.app;
-            app.set("port", 3000);
+            var app = server.app;            
+            app.set("port", process.argv[2] || 3000);
 
             httpServer = http.createServer(app);  
 
@@ -111,7 +111,7 @@ export module ServerModule {
 
             httpServer.listen(3000);
 
-            console.log('Nodular server running on port 3000 :)');
+            console.log(`Nodular server running on port ${process.argv[2] || 3000} :)`);
         }
     }
     
