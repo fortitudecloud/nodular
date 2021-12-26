@@ -60,7 +60,7 @@ export module SocketModule {
                 _server.on('connection', (socket) => {                        
                     if(socketCtrl['onConnection']) socketCtrl['onConnection'](socket);
                     bindEvent(controller, (context) => {                 
-                        socket.on(context.event, (e) => socketCtrl[context.action](e));
+                        socket.on(context.event, (e) => socketCtrl[context.action](e,socket));
                     });
                 });                      
             });

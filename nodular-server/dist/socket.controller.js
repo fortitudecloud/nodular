@@ -56,7 +56,7 @@ var SocketModule;
                     if (socketCtrl['onConnection'])
                         socketCtrl['onConnection'](socket);
                     bindEvent(controller, function (context) {
-                        socket.on(context.event, function (e) { return socketCtrl[context.action](e); });
+                        socket.on(context.event, function (e) { return socketCtrl[context.action](e, socket); });
                     });
                 });
             });
