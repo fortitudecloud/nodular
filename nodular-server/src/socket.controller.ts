@@ -56,7 +56,8 @@ export module SocketModule {
             // get Controllers
             loader.invoke(ServerModule.decorators.SOCKET_CONTROLLER, (controller) => {
                 // event binders      
-                var socketCtrl = _this.controllerFactory(controller)[0];                                
+                var socketCtrl = _this.controllerFactory(controller)[0];    
+                if(socketCtrl['onStart']) socketCtrl['onStart']();
                 _server.on('connection', (socket) => {                        
                     if(socketCtrl['onConnection']) socketCtrl['onConnection'](socket);
                     bindEvent(controller, (context) => {                 
