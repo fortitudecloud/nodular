@@ -6,7 +6,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EntryModule = void 0;
 var nodular_1 = require("../nodular");
 var EntryModule;
 (function (EntryModule) {

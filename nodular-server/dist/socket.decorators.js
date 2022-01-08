@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetEventSignal = exports.SocketController = exports.On = void 0;
 require("reflect-metadata");
 var index_1 = require("./index");
 /** socket On */

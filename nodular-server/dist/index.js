@@ -1,22 +1,14 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SocketModule = exports.HttpModule = exports.ServerModule = void 0;
 var nodular_1 = require("nodular");
 var bodyParser = require("body-parser");
 var express = require("express");
@@ -74,10 +66,11 @@ var ServerModule;
          */
         Server.prototype.config = function () {
             //mount json form parser
-            this.app.use(bodyParser.json());
+            this.app.use(bodyParser.json({ limit: '50mb' }));
             //mount query string parser
             this.app.use(bodyParser.urlencoded({
-                extended: true
+                extended: true,
+                limit: '50mb'
             }));
             // enable cors requests
             this.app.use(function (req, res, next) {
@@ -144,10 +137,10 @@ var ServerModule;
     };
 })(ServerModule = exports.ServerModule || (exports.ServerModule = {}));
 // exports
-__exportStar(require("./http.decorators"), exports);
-__exportStar(require("./socket.decorators"), exports);
+__export(require("./http.decorators"));
+__export(require("./socket.decorators"));
 var http_controller_2 = require("./http.controller");
-Object.defineProperty(exports, "HttpModule", { enumerable: true, get: function () { return http_controller_2.HttpModule; } });
+exports.HttpModule = http_controller_2.HttpModule;
 var socket_controller_2 = require("./socket.controller");
-Object.defineProperty(exports, "SocketModule", { enumerable: true, get: function () { return socket_controller_2.SocketModule; } });
+exports.SocketModule = socket_controller_2.SocketModule;
 //# sourceMappingURL=index.js.map

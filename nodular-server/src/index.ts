@@ -60,11 +60,12 @@ export module ServerModule {
          */
         public config() {        
             //mount json form parser
-            this.app.use(bodyParser.json());
+            this.app.use(bodyParser.json({ limit: '50mb' }));
 
             //mount query string parser
             this.app.use(bodyParser.urlencoded({
-                extended: true
+                extended: true,
+                limit: '50mb'
             }));  
 
             // enable cors requests
@@ -73,8 +74,8 @@ export module ServerModule {
                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
                 res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE, OPTIONS');
                 next();
-            });   
-            
+            });  
+                        
             // custom configs
             this.serverConfig.bindConfigs(this.app);
         }

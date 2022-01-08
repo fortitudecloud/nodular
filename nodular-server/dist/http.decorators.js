@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetVerbRoute = exports.HttpController = exports.Patch = exports.Delete = exports.Put = exports.Post = exports.Get = void 0;
 require("reflect-metadata");
 var index_1 = require("./index");
 /** http Get */
