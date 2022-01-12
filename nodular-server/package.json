@@ -20,6 +20,7 @@
     "app-root-path": "^2.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
+    "express-fileupload": "^1.2.1",
     "nodular": "file:../nodular",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.10",

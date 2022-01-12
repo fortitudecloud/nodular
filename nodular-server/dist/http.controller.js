@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpModule = void 0;
 require("reflect-metadata");
 var nodular_1 = require("nodular");
 var http_decorators_1 = require("./http.decorators");

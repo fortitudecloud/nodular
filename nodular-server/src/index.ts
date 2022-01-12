@@ -2,6 +2,7 @@ import { Entry, Inject, Injectable } from 'nodular';
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as io from 'socket.io';
+import * as fileUpload from 'express-fileupload';
 import { Observable, Subject } from 'rxjs';
 import { HttpModule } from './http.controller';
 import { SocketModule } from './socket.controller';
@@ -58,7 +59,12 @@ export module ServerModule {
          * @class Grapple
          * @method config
          */
-        public config() {        
+        public config() {  
+            // enable file uploads
+            this.app.use(fileUpload({
+                createParentPath: true
+            }));
+            
             //mount json form parser
             this.app.use(bodyParser.json({ limit: '50mb' }));
 
