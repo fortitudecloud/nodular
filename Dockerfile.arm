@@ -8,16 +8,16 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -E
 
 RUN apt-get install -y nodejs
 
-COPY ./@types /@types
-COPY ./nodular /nodular
-COPY ./nodular-server /nodular-server
+COPY ./@types /nodular/@types
+COPY ./nodular /nodular/nodular
+COPY ./nodular-server /nodular/nodular-server
 
 RUN npm i typescript -g
 
-WORKDIR /nodular
+WORKDIR /nodular/nodular
 RUN npm i
 RUN tsc -p ./src
 
-WORKDIR /nodular-server
+WORKDIR /nodular/nodular-server
 RUN npm i
 RUN tsc -p ./src
