@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NodularContainer = void 0;
 var decorators_1 = require("./decorators");
 var NodularContainer = /** @class */ (function () {
     function NodularContainer(nodularLoader) {

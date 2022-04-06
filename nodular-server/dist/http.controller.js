@@ -18,7 +18,7 @@ var HttpModule;
             return [controller];
         }
         ControllerFactory = __decorate([
-            nodular_1.Injectable({ factory: true })
+            (0, nodular_1.Injectable)({ factory: true })
         ], ControllerFactory);
         return ControllerFactory;
     }());
@@ -46,7 +46,7 @@ var HttpModule;
             var setVerbAction = function (controller, verb, setter) {
                 var inst = _this.controllerFactory(controller)[0];
                 for (var func in inst) {
-                    var meta = http_decorators_1.GetVerbRoute(inst, func);
+                    var meta = (0, http_decorators_1.GetVerbRoute)(inst, func);
                     if (meta && meta.verb == verb)
                         setter({ controller: controller, path: meta.route, action: func });
                 }
@@ -156,10 +156,10 @@ var HttpModule;
             }
         };
         __decorate([
-            nodular_1.Inject(ControllerFactory)
+            (0, nodular_1.Inject)(ControllerFactory)
         ], HttpController.prototype, "controllerFactory", void 0);
         HttpController = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], HttpController);
         return HttpController;
     }());

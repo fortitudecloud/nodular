@@ -28,16 +28,16 @@ var GetModule;
                 }];
         }
         __decorate([
-            index_1.Get('/hoggy')
+            (0, index_1.Get)('/hoggy')
         ], AnimalController.prototype, "dog", void 0);
         __decorate([
-            index_1.Get('/puma')
+            (0, index_1.Get)('/puma')
         ], AnimalController.prototype, "puma", void 0);
         __decorate([
-            index_1.Get('/middle')
+            (0, index_1.Get)('/middle')
         ], AnimalController.prototype, "middle", void 0);
         AnimalController = __decorate([
-            index_1.HttpController()
+            (0, index_1.HttpController)()
         ], AnimalController);
         return AnimalController;
     }());
@@ -47,7 +47,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([index_1.ServerModule, http_controller_1.HttpModule, GetModule])
+        (0, nodular_1.Nodular)([index_1.ServerModule, http_controller_1.HttpModule, GetModule])
     ], Start);
     return Start;
 }());

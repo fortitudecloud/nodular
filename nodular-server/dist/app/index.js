@@ -18,10 +18,10 @@ var DebugModule;
             };
         }
         __decorate([
-            index_1.Get('/')
+            (0, index_1.Get)('/')
         ], DebugHttp.prototype, "home", void 0);
         DebugHttp = __decorate([
-            index_1.HttpController()
+            (0, index_1.HttpController)()
         ], DebugHttp);
         return DebugHttp;
     }());
@@ -31,7 +31,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([index_1.ServerModule, index_1.HttpModule, index_1.HttpController, DebugModule])
+        (0, nodular_1.Nodular)([index_1.ServerModule, index_1.HttpModule, index_1.HttpController, DebugModule])
     ], Start);
     return Start;
 }());

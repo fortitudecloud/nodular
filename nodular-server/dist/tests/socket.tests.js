@@ -29,16 +29,16 @@ var EventModule;
             };
         }
         __decorate([
-            nodular_1.Inject(socket_controller_1.SocketModule.SocketEmitter)
+            (0, nodular_1.Inject)(socket_controller_1.SocketModule.SocketEmitter)
         ], AnimalController.prototype, "emitter", void 0);
         __decorate([
-            index_1.On('chat')
+            (0, index_1.On)('chat')
         ], AnimalController.prototype, "chat", void 0);
         __decorate([
-            index_1.On('chat message')
+            (0, index_1.On)('chat message')
         ], AnimalController.prototype, "chatMessage", void 0);
         AnimalController = __decorate([
-            index_1.SocketController()
+            (0, index_1.SocketController)()
         ], AnimalController);
         return AnimalController;
     }());
@@ -46,22 +46,22 @@ var EventModule;
     var ChatController = /** @class */ (function () {
         function ChatController() {
             this.home = function (req, res) {
-                var path = path_1.resolve(__dirname + '/chat.html');
+                var path = (0, path_1.resolve)(__dirname + '/chat.html');
                 res.sendFile(path);
             };
             this.client = function (req, res) {
-                var path = path_1.resolve(__dirname + '/socket.io.js');
+                var path = (0, path_1.resolve)(__dirname + '/socket.io.js');
                 res.sendFile(path);
             };
         }
         __decorate([
-            index_1.Get('/')
+            (0, index_1.Get)('/')
         ], ChatController.prototype, "home", void 0);
         __decorate([
-            index_1.Get('/socket.io.client')
+            (0, index_1.Get)('/socket.io.client')
         ], ChatController.prototype, "client", void 0);
         ChatController = __decorate([
-            index_1.HttpController()
+            (0, index_1.HttpController)()
         ], ChatController);
         return ChatController;
     }());
@@ -71,7 +71,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([index_1.ServerModule, http_controller_1.HttpModule, socket_controller_1.SocketModule, EventModule])
+        (0, nodular_1.Nodular)([index_1.ServerModule, http_controller_1.HttpModule, socket_controller_1.SocketModule, EventModule])
     ], Start);
     return Start;
 }());

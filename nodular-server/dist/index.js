@@ -44,7 +44,7 @@ var ServerModule;
             this.binders.forEach(function (e) { return e(a); });
         };
         ServerConfig = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 singleton: true
             })
         ], ServerConfig);
@@ -119,19 +119,19 @@ var ServerModule;
                 server.socketReady.next(sockserver);
             }
             httpServer.listen(process.argv[2] || 3000);
-            console.log("Nodular server running on port " + (process.argv[2] || 3000) + " :)");
+            console.log("Nodular server running on port ".concat(process.argv[2] || 3000, " :)"));
         };
         __decorate([
-            nodular_1.Inject(http_controller_1.HttpModule.HttpController)
+            (0, nodular_1.Inject)(http_controller_1.HttpModule.HttpController)
         ], Server.prototype, "httpController", void 0);
         __decorate([
-            nodular_1.Inject(socket_controller_1.SocketModule.SocketController)
+            (0, nodular_1.Inject)(socket_controller_1.SocketModule.SocketController)
         ], Server.prototype, "socketController", void 0);
         __decorate([
-            nodular_1.Inject(ServerConfig)
+            (0, nodular_1.Inject)(ServerConfig)
         ], Server.prototype, "serverConfig", void 0);
         Server = __decorate([
-            nodular_1.Entry()
+            (0, nodular_1.Entry)()
         ], Server);
         return Server;
     }());

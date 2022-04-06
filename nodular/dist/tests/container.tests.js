@@ -22,7 +22,7 @@ var ContainerTests;
             this.name = name;
         }
         Service = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 resolver: function () { return { name: 'Hoggy' }; }
             })
         ], Service);
@@ -36,7 +36,7 @@ var ContainerTests;
             return 'Hello';
         };
         ParameterLess = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], ParameterLess);
         return ParameterLess;
     }());
@@ -46,7 +46,7 @@ var ContainerTests;
             this.animal = animal;
         }
         Singleton = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 resolver: function () { return { animal: 'Cat' }; },
                 singleton: true
             })
@@ -63,8 +63,9 @@ var ContainerTests;
                 }
                 Response.prototype.talk = function () { return this.res; };
                 Response = __decorate([
-                    nodular_1.Injectable({
+                    (0, nodular_1.Injectable)({
                         resolver: function () { return params; },
+                        //bind: (Response) => TYPES.Response
                     })
                 ], Response);
                 return Response;
@@ -72,7 +73,7 @@ var ContainerTests;
             return [Response];
         }
         ResponseFactory = __decorate([
-            nodular_1.Injectable({ factory: true })
+            (0, nodular_1.Injectable)({ factory: true })
         ], ResponseFactory);
         return ResponseFactory;
     }());
@@ -86,22 +87,22 @@ var ContainerTests;
             this.response = this.responseFactory('Woof!')[0];
         };
         Message.prototype.greet = function () {
-            return this.greeting.hello() + " " + this.nameService.name + " " + this.animalSingleton.animal + ".\n            " + this.nameService.name + " says \"" + this.response.talk() + "\"";
+            return "".concat(this.greeting.hello(), " ").concat(this.nameService.name, " ").concat(this.animalSingleton.animal, ".\n            ").concat(this.nameService.name, " says \"").concat(this.response.talk(), "\"");
         };
         __decorate([
-            nodular_1.Inject(ParameterLess)
+            (0, nodular_1.Inject)(ParameterLess)
         ], Message.prototype, "greeting", void 0);
         __decorate([
-            nodular_1.Inject(Service)
+            (0, nodular_1.Inject)(Service)
         ], Message.prototype, "nameService", void 0);
         __decorate([
-            nodular_1.Inject(Singleton)
+            (0, nodular_1.Inject)(Singleton)
         ], Message.prototype, "animalSingleton", void 0);
         __decorate([
-            nodular_1.Inject(ResponseFactory)
+            (0, nodular_1.Inject)(ResponseFactory)
         ], Message.prototype, "responseFactory", void 0);
         Message = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 bind: function () { return TYPES.Greeting; }
             })
         ], Message);
@@ -113,7 +114,7 @@ var ContainerTests;
             this.name = 'Hoggs';
         }
         BinderClass = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 bind: function () { return "BINDERCLASS"; },
                 singleton: true
             })
@@ -128,10 +129,10 @@ var ContainerTests;
             return this.bClass.name;
         };
         __decorate([
-            nodular_1.Inject("BINDERCLASS")
+            (0, nodular_1.Inject)("BINDERCLASS")
         ], HasBinder.prototype, "bClass", void 0);
         HasBinder = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], HasBinder);
         return HasBinder;
     }());

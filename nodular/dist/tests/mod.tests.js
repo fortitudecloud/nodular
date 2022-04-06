@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EntryModule = void 0;
 var nodular_1 = require("../nodular");
 var EntryModule;
 (function (EntryModule) {
@@ -16,17 +17,17 @@ var EntryModule;
             console.log(e.runner.Message);
         };
         __decorate([
-            nodular_1.Inject('bindClass')
+            (0, nodular_1.Inject)('bindClass')
         ], EntryClass.prototype, "runner", void 0);
         EntryClass = __decorate([
-            nodular_1.Entry()
+            (0, nodular_1.Entry)()
         ], EntryClass);
         return EntryClass;
     }());
     EntryModule.EntryClass = EntryClass;
 })(EntryModule = exports.EntryModule || (exports.EntryModule = {}));
 // Add MOD
-nodular_1.Mod(EntryModule);
+(0, nodular_1.Mod)(EntryModule);
 var RuntimeMod;
 (function (RuntimeMod) {
     var Runner = /** @class */ (function () {
@@ -34,7 +35,7 @@ var RuntimeMod;
             this.Message = 'We are running';
         }
         Runner = __decorate([
-            nodular_1.Injectable({
+            (0, nodular_1.Injectable)({
                 bind: function () { return 'bindClass'; }
             })
         ], Runner);
@@ -46,7 +47,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([RuntimeMod])
+        (0, nodular_1.Nodular)([RuntimeMod])
     ], Start);
     return Start;
 }());

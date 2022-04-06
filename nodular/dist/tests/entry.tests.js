@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EntryModule = void 0;
 var nodular_1 = require("../nodular");
 var EntryModule;
 (function (EntryModule) {
@@ -14,7 +15,7 @@ var EntryModule;
             this.Message = 'We are running';
         }
         Runner = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], Runner);
         return Runner;
     }());
@@ -26,10 +27,10 @@ var EntryModule;
             console.log(e.runner.Message);
         };
         __decorate([
-            nodular_1.Inject(Runner)
+            (0, nodular_1.Inject)(Runner)
         ], EntryClass.prototype, "runner", void 0);
         EntryClass = __decorate([
-            nodular_1.Entry()
+            (0, nodular_1.Entry)()
         ], EntryClass);
         return EntryClass;
     }());
@@ -39,7 +40,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([EntryModule])
+        (0, nodular_1.Nodular)([EntryModule])
     ], Start);
     return Start;
 }());

@@ -27,16 +27,16 @@ var ControllerModule;
             };
         }
         __decorate([
-            nodular_1.Inject(socket_controller_1.SocketModule.SocketEmitter)
+            (0, nodular_1.Inject)(socket_controller_1.SocketModule.SocketEmitter)
         ], AnimalController.prototype, "emitter", void 0);
         __decorate([
-            index_1.On('chat')
+            (0, index_1.On)('chat')
         ], AnimalController.prototype, "chat", void 0);
         __decorate([
-            index_1.On('chat message')
+            (0, index_1.On)('chat message')
         ], AnimalController.prototype, "chatMessage", void 0);
         AnimalController = __decorate([
-            index_1.SocketController()
+            (0, index_1.SocketController)()
         ], AnimalController);
         return AnimalController;
     }());
@@ -46,7 +46,7 @@ var Start = /** @class */ (function () {
     function Start() {
     }
     Start = __decorate([
-        nodular_1.Nodular([index_1.ServerModule, socket_controller_1.SocketModule, ControllerModule])
+        (0, nodular_1.Nodular)([index_1.ServerModule, socket_controller_1.SocketModule, ControllerModule])
     ], Start);
     return Start;
 }());

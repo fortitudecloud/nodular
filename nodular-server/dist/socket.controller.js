@@ -5,10 +5,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SocketModule = void 0;
@@ -23,7 +27,7 @@ var SocketModule;
             return [controller];
         }
         ControllerFactory = __decorate([
-            nodular_1.Injectable({ factory: true })
+            (0, nodular_1.Injectable)({ factory: true })
         ], ControllerFactory);
         return ControllerFactory;
     }());
@@ -43,7 +47,7 @@ var SocketModule;
             var bindEvent = function (controller, setter) {
                 var inst = _this.controllerFactory(controller)[0];
                 for (var func in inst) {
-                    var meta = socket_decorators_1.GetEventSignal(inst, func);
+                    var meta = (0, socket_decorators_1.GetEventSignal)(inst, func);
                     if (meta && meta.binder == index_1.ServerModule.decorators.SOCKET_ON)
                         setter({ controller: controller, event: meta.event, action: func });
                 }
@@ -65,10 +69,10 @@ var SocketModule;
         };
         var SocketController_1;
         __decorate([
-            nodular_1.Inject(ControllerFactory)
+            (0, nodular_1.Inject)(ControllerFactory)
         ], SocketController.prototype, "controllerFactory", void 0);
         SocketController = SocketController_1 = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], SocketController);
         return SocketController;
     }());
@@ -85,10 +89,10 @@ var SocketModule;
             for (var _i = 1; _i < arguments.length; _i++) {
                 args[_i - 1] = arguments[_i];
             }
-            return (_a = SocketController.server).emit.apply(_a, __spreadArray([event], args));
+            return (_a = SocketController.server).emit.apply(_a, __spreadArray([event], args, false));
         };
         SocketEmitter = __decorate([
-            nodular_1.Injectable()
+            (0, nodular_1.Injectable)()
         ], SocketEmitter);
         return SocketEmitter;
     }());
