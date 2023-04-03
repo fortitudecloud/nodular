@@ -49,7 +49,7 @@ export class NodularContainer {
         for(var a in p) args.push(p[a]);
 
         return () => {
-            var instance = Reflect.construct(type, args);
+            var instance: any = Reflect.construct(type, args);
             var keys = Reflect.getMetadataKeys(instance);
             for(var prop in keys) {   
                 var service = Reflect.getMetadata(keys[prop], instance);
